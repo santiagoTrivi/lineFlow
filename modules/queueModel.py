@@ -5,9 +5,11 @@ class QueueModel:
         self.mu = mu
         self.units = units
         self.rho = None
+        self.po = None
         self.ls = None
         self.ws = None
         self.lq = None
+        self.lambdaEff = None
 
 
     def getLambda(self):
@@ -19,34 +21,42 @@ class QueueModel:
     def getUnits(self):
         return self.units
     
-
     def getRho(self):
-        if self.rho is None:
-            if self.mu <= 0:
-                return "Mu must be greater than 0"
-            self.rho = self.lambdaVal / self.mu
+        self.rho = self.lambdaVal / self.mu
         return self.rho
     
+    def getPo(self):
+        if self.rho is None:
+            self.getRho()
+        self.po = 1 - self.rho
+        return self.po
+
+    
     def getLs(self):
-        if self.mu <= self.lambdaVal:
-            return "Mu must be greater than Lambda"
         self.ls = self.lambdaVal / (self.mu - self.lambdaVal)
         return self.ls
-    
-    def getWs(self):
-        if self.mu <= self.lambdaVal:
-            return "Mu must be greater than Lambda"
-        self.ws = 1 / (self.mu - self.lambdaVal)
-        return self.ws
-    
     def getLq(self):
-        self.getRho()
-        self.getLs()
-        self.lq = self.rho * self.ls
+        if self.ls is None:
+            self.getLs()
+        self.lq = self.ls - self.lambdaVal
         return self.lq
     
-
-    def getPCero(self):
-        self.getRho()
-        return 1 - self.rho
+    def getWs(self):
+        if self.ls is None:
+            self.getLs()            
+        self.ws = self.ls / self.lambdaVal
+        return self.ws
+    
+    def getWq(self):
+        if self.lq is None:
+            self.getLq()
+        self.wq = self.lq / self.lambdaVal
+        return self.wq
+    
+    
+    def getLambdaEff(self):
+        if self.getPo is None:
+            self.getPo()
+        self.lambdaEff = self.lambdaVal * self.po
+        return self.lambdaEff
     

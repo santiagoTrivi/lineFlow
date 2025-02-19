@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>720</width>
+    <height>549</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>330</x>
       <y>90</y>
-      <width>441</width>
-      <height>451</height>
+      <width>381</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -33,8 +33,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>240</y>
-       <width>421</width>
+       <y>220</y>
+       <width>351</width>
        <height>192</height>
       </rect>
      </property>
@@ -66,7 +66,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>220</y>
+       <y>200</y>
        <width>47</width>
        <height>13</height>
       </rect>
@@ -80,7 +80,7 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>421</width>
+       <width>361</width>
        <height>171</height>
       </rect>
      </property>
@@ -198,7 +198,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="p0_label">
+        <widget class="QLabel" name="po_label">
          <property name="text">
           <string>P0</string>
          </property>
@@ -212,7 +212,7 @@
         </widget>
        </item>
        <item row="1" column="1" colspan="2">
-        <widget class="QLabel" name="p0_output_label">
+        <widget class="QLabel" name="po_output_label">
          <property name="frameShape">
           <enum>QFrame::Box</enum>
          </property>
@@ -240,7 +240,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>761</width>
+      <width>701</width>
       <height>71</height>
      </rect>
     </property>
@@ -294,7 +294,7 @@
       <x>10</x>
       <y>90</y>
       <width>311</width>
-      <height>451</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -307,9 +307,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
+       <y>30</y>
        <width>291</width>
-       <height>181</height>
+       <height>161</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -318,54 +318,13 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout">
-        <property name="horizontalSpacing">
-         <number>10</number>
-        </property>
-        <property name="verticalSpacing">
-         <number>15</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QLabel" name="lambda_label">
-          <property name="text">
-           <string>Lambda (λ)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lambda_input_lineEdit"/>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="mu_label">
-          <property name="text">
-           <string>Mu (μ)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="mu_input_lineEdit"/>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="units_label">
-          <property name="text">
-           <string>Unidades (n)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="units_input_lineEdit"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <layout class="QGridLayout" name="gridLayout_4"/>
     </widget>
     <widget class="QPushButton" name="clean_pushButton">
      <property name="geometry">
       <rect>
        <x>220</x>
-       <y>410</y>
+       <y>390</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -388,7 +347,7 @@
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>410</y>
+       <y>390</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -411,7 +370,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>30</y>
+       <y>10</y>
        <width>47</width>
        <height>13</height>
       </rect>
@@ -424,7 +383,7 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>410</y>
+       <y>390</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -432,6 +391,67 @@
      <property name="text">
       <string>Calcular</string>
      </property>
+    </widget>
+    <widget class="QCheckBox" name="withLimit_checkBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>200</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Con limites</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>271</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>15</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lambda_label">
+        <property name="text">
+         <string>Lambda (λ)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lambda_input_lineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="mu_label">
+        <property name="text">
+         <string>Mu (μ)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="mu_input_lineEdit"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="units_input_lineEdit"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="units_label">
+        <property name="text">
+         <string>Unidades (n)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <zorder>frame</zorder>
@@ -443,7 +463,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>720</width>
      <height>21</height>
     </rect>
    </property>

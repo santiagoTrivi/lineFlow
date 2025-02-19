@@ -4,6 +4,8 @@
 pip install pyqt5
 
 pip install pyqt5-tools
+
+pip reportlab
 ```
 
 # Steps to develop this calculator
@@ -24,4 +26,10 @@ pyrcc5 ./icons/logo.qrc -o ./logo_rc.py
 
 ```
 python main.py
+```
+
+# Make executable
+
+```
+pyinstaller -F main.py --noconsole
 ```
