@@ -2,21 +2,13 @@ import sys
 from PyQt5.QtWidgets import (
     QApplication, 
     QMainWindow, 
-    QLabel, 
-    QVBoxLayout, 
-    QWidget, 
-    QPushButton, 
-    QFrame, 
-    QGridLayout, 
-    QSizePolicy, 
-    QSpacerItem, 
-    QTableWidgetItem
 )
-from PyQt5.QtGui import QIntValidator
-
+from PyQt5.QtGui import QIntValidator, QIcon
 from lineFlow import Ui_MainWindow
 from modules.queueModel import QueueModel
-
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+import datetime
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -25,6 +17,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.setWindowTitle("LineFlow | Calculadora de modelos de lineas de espera")
+
         #user input
         self.lambdaValue = self.ui.lambda_input_lineEdit
         self.muValue = self.ui.mu_input_lineEdit
@@ -32,7 +26,7 @@ class MainWindow(QMainWindow):
         
         ## results
         self.rho = self.ui.rho_output_label
-        self.p0 = self.ui.p0_output_label
+        self.po = self.ui.po_output_label
         self.ls = self.ui.ls_output_label
         self.lq = self.ui.lq_output_label
         self.ws = self.ui.ws_output_label
@@ -64,7 +58,7 @@ class MainWindow(QMainWindow):
         self.muValue.clear()
         self.units.clear()
         self.rho.clear()
-        self.p0.clear()
+        self.po.clear()
         self.ls.clear()
         self.lq.clear()
         self.ws.clear()
@@ -76,9 +70,17 @@ class MainWindow(QMainWindow):
         if self.lambdaValue.text() and self.muValue.text() and self.units.text():
             calculator = QueueModel(int(self.lambdaValue.text()), int(self.muValue.text()), int(self.units.text()))
             self.rho.setText(str(calculator.getRho()))
-            self.p0.setText(str(calculator.getPCero()))
+            self.po.setText(str(calculator.getPo()))
             self.ls.setText(str(calculator.getLs()))
+            self.lq.setText(str(calculator.getLq()))
             self.ws.setText(str(calculator.getWs()))         
+            self.wq.setText(str(calculator.getWq()))
+            self.lambdaEff.setText(str(calculator.getLambdaEff()))
+
+
+    def pdf_export(self):
+        date = datetime.datetime.now()
+        doc = canvas.Canvas(f"reportte_{date}.pdf", pagesize=letter)         
 
 
 
