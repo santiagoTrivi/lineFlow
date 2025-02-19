@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/lineFlow.ui'
+# Form implementation generated from reading ui file 'lineFlow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -165,20 +165,23 @@ class Ui_MainWindow(object):
         self.clean_pushButton = QtWidgets.QPushButton(self.frame)
         self.clean_pushButton.setGeometry(QtCore.QRect(220, 410, 75, 23))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./ui\\icons/backspace.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/backspace.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.clean_pushButton.setIcon(icon)
         self.clean_pushButton.setIconSize(QtCore.QSize(20, 20))
         self.clean_pushButton.setObjectName("clean_pushButton")
         self.pdf_export_pushButton = QtWidgets.QPushButton(self.frame)
         self.pdf_export_pushButton.setGeometry(QtCore.QRect(130, 410, 75, 23))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("./ui\\icons/pdf.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("icons/pdf.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pdf_export_pushButton.setIcon(icon1)
         self.pdf_export_pushButton.setIconSize(QtCore.QSize(20, 20))
         self.pdf_export_pushButton.setObjectName("pdf_export_pushButton")
         self.label_7 = QtWidgets.QLabel(self.frame)
         self.label_7.setGeometry(QtCore.QRect(20, 30, 47, 13))
         self.label_7.setObjectName("label_7")
+        self.calculate_pushButton = QtWidgets.QPushButton(self.frame)
+        self.calculate_pushButton.setGeometry(QtCore.QRect(40, 410, 75, 23))
+        self.calculate_pushButton.setObjectName("calculate_pushButton")
         self.frame.raise_()
         self.frame_4.raise_()
         self.frame_5.raise_()
@@ -217,6 +220,7 @@ class Ui_MainWindow(object):
         self.clean_pushButton.setText(_translate("MainWindow", "Limpiar"))
         self.pdf_export_pushButton.setText(_translate("MainWindow", "exportar"))
         self.label_7.setText(_translate("MainWindow", "Entrada"))
+        self.calculate_pushButton.setText(_translate("MainWindow", "Calcular"))
 import logo_rc
 
 

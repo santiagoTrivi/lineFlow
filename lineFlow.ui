@@ -420,6 +420,19 @@
       <string>Entrada</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="calculate_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Calcular</string>
+     </property>
+    </widget>
    </widget>
    <zorder>frame</zorder>
    <zorder>frame_4</zorder>
