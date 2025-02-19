@@ -51,6 +51,7 @@ class MainWindow(QMainWindow):
     def init_actions(self):
         self.cleanButton.clicked.connect(self.clean_all)
         self.calculateButton.clicked.connect(self.events)
+        self.pdfExportButton.clicked.connect(self.pdf_export)
 
     # Clean all the fields
     def clean_all(self):
@@ -79,9 +80,21 @@ class MainWindow(QMainWindow):
 
 
     def pdf_export(self):
-        date = datetime.datetime.now()
-        doc = canvas.Canvas(f"reportte_{date}.pdf", pagesize=letter)         
-
+        
+        c = canvas.Canvas(f"reporte.pdf", pagesize=letter)         
+        c.drawString(100, 750, "Resultados de la Calculadora de Líneas de Espera")
+        c.drawString(100, 750, "")
+        c.drawString(100, 750, "")
+        c.drawString(100, 730, f"Lambda (λ): {self.lambdaValue.text()}")
+        c.drawString(100, 710, f"Mu (μ): {self.muValue.text()}")
+        c.drawString(100, 690, f"Rho (ρ): {self.rho.text()}")
+        c.drawString(100, 670, f"Po: {self.po.text()}")
+        c.drawString(100, 650, f"Ls: {self.ls.text()}")
+        c.drawString(100, 630, f"Lq: {self.lq.text()}")
+        c.drawString(100, 610, f"Ws: {self.ws.text()}")
+        c.drawString(100, 590, f"Wq: {self.wq.text()}")
+        c.drawString(100, 570, f"Lambda Efectiva: {self.lambdaEff.text()}")
+        c.save()
 
 
 if __name__ == "__main__":
