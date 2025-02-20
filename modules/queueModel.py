@@ -4,7 +4,7 @@ def calculate_unlimited(lambda_, mu):
     if lambda_ >= mu:
         raise ValueError("Lambda debe ser menor que Mu")
 
-    rho = round((lambda_ / mu), 4)
+    rho = lambda_ / mu
     Po = 1 - rho
     Ls = lambda_ / (mu - lambda_)
     Lq = rho * Ls

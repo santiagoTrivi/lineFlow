@@ -96,9 +96,10 @@ class MainWindow(QMainWindow):
     
         if self.isLimited.isChecked():
 
-            if self.units.text() is None:
+            if self.units.text() is None or self.units.text() == "":
                 QMessageBox.warning(self, "Error", "Por favor, llene el campo de unidades para el modelo con limite")
-                
+                return
+            
             self.results = calculate_limited(int(self.lambdaValue.text()), int(self.muValue.text()), int(self.units.text()))
             self.lambdaEff.setText(str(self.results["Lambda_eff"]))
         elif self.isUnlimited.isChecked():
