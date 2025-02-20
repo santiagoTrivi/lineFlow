@@ -30,7 +30,6 @@ class MainWindow(QMainWindow):
         self.units = self.ui.units_input_lineEdit
         self.isLimited = self.ui.limited_radioButton
         self.isUnlimited = self.ui.unlimited_radioButton
-        self.isInterval = self.ui.interval_radioButton
         
         ## results
         self.results = None
@@ -65,6 +64,10 @@ class MainWindow(QMainWindow):
         self.calculateButton.clicked.connect(self.events)
         self.pdfExportButton.clicked.connect(self.pdf_export)
 
+        self.isUnlimited.clicked.connect(self.setUnlimitedModel)
+        self.isLimited.clicked.connect(self.setLimitedModel)
+
+
     # Clean all the fields
     def clean_all(self):
         self.lambdaValue.clear()
@@ -77,26 +80,33 @@ class MainWindow(QMainWindow):
         self.ws.clear()
         self.wq.clear()
         self.lambdaEff.clear()
+        self.prod_dist.clear()
         self.isLimited.setChecked(False)
         self.isUnlimited.setChecked(False)
-        self.isInterval.setChecked(False)
         self.results = None
 
     # Calculate the values
     def events(self):
-        if self.lambdaValue.text() is None or self.muValue.text() is None or self.units.text() is None:
-            QMessageBox.warning(self, "Error", "Por favor, llene los campos Lambda (λ), Mu (μ), y unidades")
+
+        if self.isLimited.isChecked() == False and self.isUnlimited.isChecked() == False:
+            QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
+
+        if self.lambdaValue.text() is None or self.muValue.text() is None:
+            QMessageBox.warning(self, "Error", "Por favor, llene los campos Lambda (λ), Mu (μ)")
     
         if self.isLimited.isChecked():
+
+            if self.units.text() is None:
+                QMessageBox.warning(self, "Error", "Por favor, llene el campo de unidades para el modelo con limite")
+                
             self.results = calculate_limited(int(self.lambdaValue.text()), int(self.muValue.text()), int(self.units.text()))
+            self.lambdaEff.setText(str(self.results["Lambda_eff"]))
         elif self.isUnlimited.isChecked():
             try:
-                self.results = calculate_unlimited(int(self.lambdaValue.text()), int(self.muValue.text()), int(self.units.text()))
+                self.results = calculate_unlimited(int(self.lambdaValue.text()), int(self.muValue.text()))
             except ValueError as e:
                 QMessageBox.warning(self, "Error", str(e))
                 return
-        elif self.isInterval.isChecked():
-            pass
         else:
             QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
             return
@@ -107,7 +117,7 @@ class MainWindow(QMainWindow):
         self.lq.setText(str(self.results["Lq"]))
         self.ws.setText(str(self.results["Ws"]))         
         self.wq.setText(str(self.results["Wq"]))
-        self.lambdaEff.setText(str(self.results["Lambda_eff"]))
+        
         
         self.populate_table()
 
@@ -122,8 +132,19 @@ class MainWindow(QMainWindow):
                 self.prod_dist.setItem(row, 1, QTableWidgetItem(str(item['Pn'])))
                 self.prod_dist.setItem(row, 2, QTableWidgetItem(str(item['Fn'])))
 
-                
 
+    def setUnlimitedModel(self):
+        self.ui.lambda_eff_label.hide()
+        self.ui.lambda_eff_output_label.hide()
+        self.ui.units_label.hide()
+        self.ui.units_input_lineEdit.hide()
+
+    def setLimitedModel(self):
+        self.ui.lambda_eff_label.show()
+        self.ui.lambda_eff_output_label.show()
+        self.ui.units_label.show()
+        self.ui.units_input_lineEdit.show()
+       
 
     def pdf_export(self):
 
@@ -146,6 +167,12 @@ class MainWindow(QMainWindow):
         c.drawString(100, 570, f"Wq: {self.results['Wq']}")
         c.drawString(100, 550, f"Lambda Efectiva: {self.results['Lambda_eff']}")
         
+        c.drawString(100,510, f"Distribucion de probabilidad")
+
+        space = 510
+        for row, item in enumerate(self.results['Prob_dist']):
+            space -= 20
+            c.drawString(100, space,f"{item}")
         c.save()
 
     
