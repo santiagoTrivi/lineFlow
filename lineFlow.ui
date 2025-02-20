@@ -29,7 +29,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="prodDist_tableWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -40,12 +40,17 @@
      </property>
      <column>
       <property name="text">
-       <string>Numero</string>
+       <string>n</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Resultado</string>
+       <string>Pn</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Fn</string>
       </property>
      </column>
     </widget>
@@ -323,7 +328,7 @@
     <widget class="QPushButton" name="clean_pushButton">
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>200</x>
        <y>390</y>
        <width>75</width>
        <height>23</height>
@@ -346,7 +351,7 @@
     <widget class="QPushButton" name="pdf_export_pushButton">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>110</x>
        <y>390</y>
        <width>75</width>
        <height>23</height>
@@ -382,7 +387,7 @@
     <widget class="QPushButton" name="calculate_pushButton">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>20</x>
        <y>390</y>
        <width>75</width>
        <height>23</height>
@@ -390,19 +395,6 @@
      </property>
      <property name="text">
       <string>Calcular</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="withLimit_checkBox">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>200</y>
-       <width>70</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Con limites</string>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
@@ -448,6 +440,45 @@
        <widget class="QLabel" name="units_label">
         <property name="text">
          <string>Unidades (n)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QFrame" name="frame_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>102</width>
+       <height>83</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="limited_radioButton">
+        <property name="text">
+         <string>Con limite</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="unlimited_radioButton">
+        <property name="text">
+         <string>Sin limite</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="interval_radioButton">
+        <property name="text">
+         <string>Intervalo</string>
         </property>
        </widget>
       </item>
