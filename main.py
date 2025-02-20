@@ -112,7 +112,6 @@ class MainWindow(QMainWindow):
         self.populate_table()
 
     def populate_table(self):
-        print(self.results['Prob_dist'])
         if self.results:
             self.prod_dist.setColumnCount(3)
             self.prod_dist.setRowCount(len(self.results['Prob_dist']))
