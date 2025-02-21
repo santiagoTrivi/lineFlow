@@ -31,5 +31,5 @@ python main.py
 # Make executable
 
 ```
-pyinstaller -F main.py --noconsole
+pyinstaller -F main.py --noconsole --icon wind.ico
 ```
