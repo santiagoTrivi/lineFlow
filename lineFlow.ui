@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
+    <width>919</width>
     <height>549</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="frame_4">
@@ -19,7 +22,7 @@
      <rect>
       <x>330</x>
       <y>90</y>
-      <width>381</width>
+      <width>581</width>
       <height>431</height>
      </rect>
     </property>
@@ -33,10 +36,16 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>220</y>
-       <width>351</width>
-       <height>192</height>
+       <y>230</y>
+       <width>561</width>
+       <height>171</height>
       </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>561</width>
+       <height>171</height>
+      </size>
      </property>
      <column>
       <property name="text">
@@ -57,11 +66,16 @@
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>0</y>
-       <width>51</width>
+       <width>91</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Resultados</string>
@@ -71,13 +85,18 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>200</y>
-       <width>47</width>
-       <height>13</height>
+       <y>190</y>
+       <width>311</width>
+       <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>Tabla</string>
+      <string>Tabla de distribucion de probabilidades :</string>
      </property>
     </widget>
     <widget class="QFrame" name="frame_3">
@@ -85,8 +104,8 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>361</width>
-       <height>171</height>
+       <width>561</width>
+       <height>161</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -98,32 +117,32 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>300</x>
         <y>10</y>
-        <width>161</width>
+        <width>241</width>
         <height>111</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QLabel" name="ws_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Ws</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" colspan="2">
-        <widget class="QLabel" name="ws_output_label">
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="wq_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Wq</string>
          </property>
@@ -141,6 +160,11 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="lambda_eff_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Lambda eff</string>
          </property>
@@ -156,6 +180,16 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLabel" name="ws_output_label">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="layoutWidget">
@@ -163,13 +197,18 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>161</width>
+        <width>231</width>
         <height>141</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="3" column="0">
         <widget class="QLabel" name="lq_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Lq</string>
          </property>
@@ -187,6 +226,11 @@
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="rho_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Rho (ρ)</string>
          </property>
@@ -194,6 +238,9 @@
        </item>
        <item row="0" column="1" colspan="2">
         <widget class="QLabel" name="rho_output_label">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Box</enum>
          </property>
@@ -204,6 +251,11 @@
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="po_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>P0</string>
          </property>
@@ -211,6 +263,11 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="ls_label">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Ls</string>
          </property>
@@ -245,7 +302,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>701</width>
+      <width>901</width>
       <height>71</height>
      </rect>
     </property>
@@ -260,7 +317,7 @@
       <rect>
        <x>70</x>
        <y>20</y>
-       <width>111</width>
+       <width>141</width>
        <height>31</height>
       </rect>
      </property>
@@ -302,37 +359,28 @@
       <height>431</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(17, 2, 255);</string>
+    </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QFrame" name="frame_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>291</width>
-       <height>161</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4"/>
-    </widget>
     <widget class="QPushButton" name="clean_pushButton">
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>390</y>
+       <y>370</y>
        <width>75</width>
-       <height>23</height>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Limpiar</string>
@@ -351,14 +399,19 @@
     <widget class="QPushButton" name="pdf_export_pushButton">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>390</y>
-       <width>75</width>
-       <height>23</height>
+       <x>100</x>
+       <y>370</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>exportar</string>
+      <string>Exportar</string>
      </property>
      <property name="icon">
       <iconset>
@@ -375,10 +428,15 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>10</y>
-       <width>47</width>
-       <height>13</height>
+       <y>140</y>
+       <width>71</width>
+       <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Entrada</string>
@@ -388,20 +446,77 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>390</y>
+       <y>370</y>
        <width>75</width>
-       <height>23</height>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Calcular</string>
      </property>
     </widget>
+    <widget class="QFrame" name="frame_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>271</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QRadioButton" name="limited_radioButton">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>21</y>
+        <width>85</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Con limite</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="unlimited_radioButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>21</y>
+        <width>78</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Sin limite</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>40</y>
+       <y>170</y>
        <width>271</width>
        <height>141</height>
       </rect>
@@ -421,7 +536,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lambda_input_lineEdit"/>
+       <widget class="QLineEdit" name="lambda_input_lineEdit">
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(0, 0, 0);</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="mu_label">
@@ -445,57 +564,33 @@
       </item>
      </layout>
     </widget>
-    <widget class="QFrame" name="frame_6">
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>200</y>
-       <width>102</width>
-       <height>83</height>
+       <x>20</x>
+       <y>30</y>
+       <width>61</width>
+       <height>16</height>
       </rect>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+     <property name="text">
+      <string>Modelo</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="limited_radioButton">
-        <property name="text">
-         <string>Con limite</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="unlimited_radioButton">
-        <property name="text">
-         <string>Sin limite</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QRadioButton" name="interval_radioButton">
-        <property name="text">
-         <string>Intervalo</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
    </widget>
-   <zorder>frame</zorder>
-   <zorder>frame_4</zorder>
-   <zorder>frame_5</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>720</width>
-     <height>21</height>
+     <width>919</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

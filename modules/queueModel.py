@@ -1,4 +1,6 @@
-def calculate_unlimited(lambda_, mu, N):
+ROUND_DIGITS = 8
+
+def calculate_unlimited(lambda_, mu):
     if lambda_ >= mu:
         raise ValueError("Lambda debe ser menor que Mu")
 
@@ -20,7 +22,7 @@ def calculate_unlimited(lambda_, mu, N):
         "Ws": Ws,
         "Wq": Wq,
         "Lambda_eff": lambda_eff,
-        "Prob_dist": calculate_prob_dist_unlimited(lambda_, mu, N)
+        "Prob_dist": calculate_prob_dist_unlimited(lambda_, mu)
     }
 
 
@@ -56,14 +58,18 @@ def calculate_limited(lambda_, mu, N):
     }
 
 
-def calculate_prob_dist_unlimited(lambda_, mu, N):
+def calculate_prob_dist_unlimited(lambda_, mu):
     rho = lambda_ / mu
     prob_dist = []
     Fn = 0
-    for n in range(N + 1):  
+    n = 0
+
+    while Fn < 0.9999 or Fn == 1:
         Pn = (1 - rho) * rho**n
         Fn += Pn
         prob_dist.append({"n": n, "Pn": Pn, "Fn": Fn})
+        n += 1
+
     return prob_dist
 
 def calculate_prob_dist_limited(lambda_, mu, N):
