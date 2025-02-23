@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, 
+QApplication, 
     QMainWindow,
     QMessageBox,
     QTableWidgetItem
@@ -12,9 +12,11 @@ from modules.queueModel import (
     calculate_unlimited
 )
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer
+from reportlab.lib import colors
 import datetime
-
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import Paragraph
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -51,7 +53,6 @@ class MainWindow(QMainWindow):
         # validadores
         self.setValidators()
         self.init_actions()
-
 
 
     def setValidators(self):
@@ -167,43 +168,70 @@ class MainWindow(QMainWindow):
 
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"reporte_{timestamp}.pdf"
-        c = canvas.Canvas(filename, pagesize=letter)
+        document = SimpleDocTemplate(filename, pagesize=letter)
 
+        # Create styles
+        estilos = getSampleStyleSheet()
+        estilo_titulo = ParagraphStyle('TitleStyle', parent=estilos['Title'], fontSize=18, fontName='Helvetica-Bold')
+    
         # Title
-        c.drawString(100, 750, "Resultados de la Calculadora de Líneas de Espera")
-        c.line(100, 745, 500, 745)
-
+        titulo = Paragraph("Resultados de la Calculadora de Líneas de Espera", estilo_titulo)
         # Basic results
-        c.drawString(100, 710, f"Lambda (λ): {self.results['Lambda']:.4f}")
-        c.drawString(100, 690, f"Mu (μ): {self.results['Mu']:.4f}")
-        c.drawString(100, 670, f"Rho (ρ): {self.results['Rho']:.4f}")
-        c.drawString(100, 650, f"Po: {self.results['Po']:.4f}")
-        c.drawString(100, 630, f"Ls: {self.results['Ls']:.4f}")
-        c.drawString(100, 610, f"Lq: {self.results['Lq']:.4f}")
-        c.drawString(100, 590, f"Ws: {self.results['Ws']:.4f}")
-        c.drawString(100, 570, f"Wq: {self.results['Wq']:.4f}")
-        if 'Lambda_eff' in self.results:
-            c.drawString(100, 550, f"Lambda Efectiva: {self.results['Lambda_eff']:.4f}")
+        data1 = [["Resultados Básicos", ""],
+                 ["Parámetro", "Valor"]]
+
+        data1 += [
+        ["Lambda (λ)", f"{self.results['Lambda']:.4f}"],
+        ["Mu (μ)", f"{self.results['Mu']:.4f}"],
+        ["Rho (ρ)", f"{self.results['Rho']:.4f}"],
+        ["Po", f"{self.results['Po']:.4f}"],
+        ["Ls", f"{self.results['Ls']:.4f}"],
+        ["Lq", f"{self.results['Lq']:.4f}"],
+        ["Ws", f"{self.results['Ws']:.4f}"],
+        ["Wq", f"{self.results['Wq']:.4f}"]]
+
+        if self.isLimited.isChecked() and 'Lambda_eff' in self.results:
+            data1.append(["Lambda Efectiva", f"{self.results['Lambda_eff']:.4f}"])
 
         # Probability distribution
-        c.drawString(100, 510, "Distribución de Probabilidad")
-        
-        c.drawString(100,490,"n")
-        c.drawString(150,490,"Pn")
-        c.drawString(220,490,"Fn")
-        
-        c.line(100,485,270,485)
-
-        y = 470
+        data2 = [["Distribución de Probabilidad", ""],
+        ["n", "Pn", "Fn"]]
         for item in self.results['Prob_dist']:
-            c.drawString(100,y,str(item['n']))
-            c.drawString(150,y,f"{item['Pn']:.4f}")
-            c.drawString(220,y,f"{item['Fn']:.4f}")
-            y -= 20
+            data2.append([str(item['n']), f"{item['Pn']:.4f}", f"{item['Fn']:.4f}"])
 
-        c.save()
+        table1 = Table(data1)
+        table2 = Table(data2)
+
+        style1 = TableStyle([
+            ('SPAN', (0, 0), (-1, 0)),
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('BOTTOMPADDING', (0, -1), (0, 0), 12),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ])
+
+        style2 = TableStyle([
+            ('SPAN', (0, 0), (-1, 0)),
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('BOTTOMPADDING', (0, -1), (0, 0), 12),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ])
+
+        table1.setStyle(style1)
+        table2.setStyle(style2)
+
+        spacer = Spacer(1, 20)
+
+        elements = [titulo, Spacer(1, 12), table1, spacer, table2]
+        document.build(elements)
         QMessageBox.information(self, "Éxito", f"Reporte exportado como {filename}")
-
 
 if __name__ == "__main__":
     
