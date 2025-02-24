@@ -25,6 +25,11 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        width = 920
+        height = 533
+        # setting  the fixed size of window
+        self.setFixedSize(width, height)
+
         self.setWindowTitle("LineFlow | Calculadora de modelos de líneas de espera")
 
         #user input
