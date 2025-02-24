@@ -44,7 +44,9 @@ class MainWindow(QMainWindow):
         self.wq = self.ui.wq_output_label
         self.lambdaEff = self.ui.lambda_eff_output_label
         self.prod_dist = self.ui.prodDist_tableWidget
-
+        self.prod_dist.setColumnWidth(0, 80)
+        self.prod_dist.setColumnWidth(1, 220)
+        self.prod_dist.setColumnWidth(2, 225)
         # Botones
         self.cleanButton = self.ui.clean_pushButton
         self.pdfExportButton = self.ui.pdf_export_pushButton
@@ -95,7 +97,10 @@ class MainWindow(QMainWindow):
             return
 
         if not self.isLimited.isChecked() and not self.isUnlimited.isChecked():
-            QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
+            mesg = QMessageBox
+            mesg.setStyleSheet(self, "background-color: rgb(32,34,37); color: rgb(255, 255, 255);")
+            mesg.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
+            ## QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
             return
 
         try:
