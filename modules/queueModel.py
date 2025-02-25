@@ -84,3 +84,33 @@ def calculate_prob_dist_limited(lambda_, mu, N):
         Fn += Pn
         prob_dist.append({"n": n, "Pn": Pn, "Fn": Fn})
     return prob_dist
+
+
+def pnFunc(lambda_, mu, N):
+    prob_dist = calculate_prob_dist_limited(lambda_, mu, N)
+    return prob_dist[-1]['Pn'] if prob_dist else None
+
+
+def fix_calculate_limited(lambda_, mu, N):
+    
+    rho = lambda_ / mu
+    Po = (1 - rho) / (1 - rho**(N + 1))
+    Ls = rho * (1 - (N + 1) * rho**N + N * rho**(N + 1)) / ((1 - rho) * (1 - rho**(N + 1)))
+    Lq = Ls - (1 - Po)
+    pn = pnFunc(lambda_, mu, N)
+    lambda_eff = lambda_ * (1 - pn)
+    Wq = Lq / lambda_eff
+    Ws = Ls / lambda_eff
+
+    return {
+        "Lambda": lambda_,
+        "Mu": mu,
+        "Rho": rho,
+        "Po": Po,
+        "Ls": Ls,
+        "Lq": Lq,
+        "Ws": Ws,
+        "Wq": Wq,
+        "Lambda_eff": lambda_eff,
+        "Prob_dist": calculate_prob_dist_limited(lambda_, mu, N)
+    }

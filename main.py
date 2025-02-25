@@ -102,10 +102,7 @@ class MainWindow(QMainWindow):
             return
 
         if not self.isLimited.isChecked() and not self.isUnlimited.isChecked():
-            mesg = QMessageBox
-            mesg.setStyleSheet(self, "background-color: rgb(32,34,37); color: rgb(255, 255, 255);")
-            mesg.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
-            ## QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
+            QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
             return
 
         try:
