@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtWidgets import (
 QApplication, 
     QMainWindow,
@@ -17,6 +18,7 @@ from reportlab.lib import colors
 import datetime
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import Paragraph
+from calcFacade import CalcFacade
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -32,12 +34,20 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("LineFlow | Calculadora de modelos de líneas de espera")
 
+        self.reports_path = "reportes"
+
         #user input
+        self.singleServer = self.ui.singleServer_radioButton
+        self.multiServer = self.ui.multiServer_radioButton
+        self.servers = self.ui.servers_input_lineEdit
         self.lambdaValue = self.ui.lambda_input_lineEdit
         self.muValue = self.ui.mu_input_lineEdit
         self.units = self.ui.units_input_lineEdit
         self.isLimited = self.ui.limited_radioButton
         self.isUnlimited = self.ui.unlimited_radioButton
+
+        self.ui.servers_input_lineEdit.hide()
+        self.ui.servers_label.hide()
 
         # Resultados
         self.results = None
@@ -67,6 +77,7 @@ class MainWindow(QMainWindow):
         self.lambdaValue.setValidator(QDoubleValidator(0.0, 9999.0, 2))
         self.muValue.setValidator(QDoubleValidator(0.0, 9999.0, 2))
         self.units.setValidator(QDoubleValidator(0.0, 9999.0, 0))  # Units must be integers
+        self.servers.setValidator(QDoubleValidator(0.0, 9999.0, 0))  # Units must be integers
 
     def init_actions(self):
         # Connect buttons to actions
@@ -76,6 +87,11 @@ class MainWindow(QMainWindow):
 
         self.isUnlimited.clicked.connect(self.setUnlimitedModel)
         self.isLimited.clicked.connect(self.setLimitedModel)
+
+        self.singleServer.clicked.connect(self.setSingleServerMode)
+        self.multiServer.clicked.connect(self.setMultiServerMode)
+
+        self.ui.open_reports_pushButton.clicked.connect(self.open_reports)
 
     def clean_all(self):
         # Clear all fields and reset the UI
@@ -93,52 +109,13 @@ class MainWindow(QMainWindow):
         self.prod_dist.setRowCount(0)
         self.isLimited.setChecked(False)
         self.isUnlimited.setChecked(False)
+        self.singleServer.setChecked(False)
+        self.multiServer.setChecked(False)
+        self.servers.clear()
         self.results = None
 
     def events(self):
-        # Validate input
-        if not self.lambdaValue.text() or not self.muValue.text():
-            QMessageBox.warning(self, "Error", "Por favor, llene los campos Lambda (λ) y Mu (μ)")
-            return
-
-        if not self.isLimited.isChecked() and not self.isUnlimited.isChecked():
-            QMessageBox.warning(self, "Error", "Por favor, seleccione un tipo de modelo")
-            return
-
-        try:
-            lambda_val = float(self.lambdaValue.text())
-            mu_val = float(self.muValue.text())
-        except ValueError:
-            QMessageBox.warning(self, "Error", "Lambda (λ) y Mu (μ) deben ser números válidos")
-            return
-
-        if lambda_val <= 0 or mu_val <= 0:
-            QMessageBox.warning(self, "Error", "Lambda (λ) y Mu (μ) deben ser mayores que cero")
-            return
-
-        if self.isUnlimited.isChecked() and lambda_val >= mu_val:
-            QMessageBox.warning(self, "Error", "Para el modelo ilimitado, Lambda (λ) debe ser menor que Mu (μ)")
-            return
-
-        # Perform calculation
-        if self.isLimited.isChecked():
-            if not self.units.text():
-                QMessageBox.warning(self, "Error", "Por favor, llene el campo de unidades para el modelo con límite")
-                return
-            units = int(self.units.text())
-            self.results = calculate_limited(lambda_val, mu_val, units)
-            self.lambdaEff.setText(f"{self.results['Lambda_eff']:.4f}")
-        else:
-            self.results = calculate_unlimited(lambda_val, mu_val)
-
-        # Display results
-        self.rho.setText(f"{self.results['Rho']:.4f}")
-        self.po.setText(f"{self.results['Po']:.4f}")
-        self.ls.setText(f"{self.results['Ls']:.4f}")
-        self.lq.setText(f"{self.results['Lq']:.4f}")
-        self.ws.setText(f"{self.results['Ws']:.4f}")
-        self.wq.setText(f"{self.results['Wq']:.4f}")
-        self.populate_table()
+        self.facade = CalcFacade(self)
 
     def populate_table(self):
         # Populate the probability distribution table
@@ -167,14 +144,41 @@ class MainWindow(QMainWindow):
         self.ui.units_label.show()
         self.ui.units_input_lineEdit.show()
 
+    def setMultiServerMode(self):
+        self.ui.servers_label.show()
+        self.ui.servers_input_lineEdit.show()
+
+    def setSingleServerMode(self):
+        self.ui.servers_label.hide()
+        self.ui.servers_input_lineEdit.hide()
+        
+
+    def open_reports(self):
+        path = os.path.join(os.getcwd(), self.reports_path)
+        self.handle_directory(path)
+        os.startfile(path)
+        
+    def handle_directory(self, path):
+        if not os.path.exists(path):
+            os.makedirs(path)
+
     def pdf_export(self):
         # Export results to PDF
         if self.results is None:
             QMessageBox.warning(self, "Error", "Por favor, calcule los valores antes de exportar el reporte")
             return
+        
+        subdir = ""
+        if self.singleServer.isChecked():
+            subdir = self.reports_path + "/un_servidor"
+        else:
+            subdir = self.reports_path + "/varios_servidores"
+        
+        saved_path = os.path.join(os.getcwd(), subdir)
+        self.handle_directory(saved_path)
 
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"reporte_{timestamp}.pdf"
+        filename = os.path.join(saved_path, f"reporte_{timestamp}.pdf")
         document = SimpleDocTemplate(filename, pagesize=letter)
 
         # Create styles
