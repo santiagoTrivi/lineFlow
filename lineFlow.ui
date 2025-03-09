@@ -451,6 +451,26 @@ border-radius:5px;</string>
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="open_reports_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>30</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>Abrir reportes</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
@@ -668,7 +688,7 @@ border-radius: 4px;</string>
        <x>30</x>
        <y>170</y>
        <width>251</width>
-       <height>152</height>
+       <height>171</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -681,6 +701,17 @@ border-radius: 4px;</string>
       <property name="verticalSpacing">
        <number>15</number>
       </property>
+      <item row="2" column="0">
+       <widget class="QLabel" name="units_label">
+        <property name="styleSheet">
+         <string notr="true">border: 1px solid #007bff;
+</string>
+        </property>
+        <property name="text">
+         <string>Unidades (n)</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="lambda_label">
         <property name="styleSheet">
@@ -689,14 +720,6 @@ border-radius: 4px;</string>
         </property>
         <property name="text">
          <string>Lambda (λ)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lambda_input_lineEdit">
-        <property name="styleSheet">
-         <string notr="true">border-color: rgb(0, 0, 0);
-border: 1px solid #cccccc;</string>
         </property>
        </widget>
       </item>
@@ -711,8 +734,8 @@ border: 1px solid #cccccc;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="mu_input_lineEdit">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lambda_input_lineEdit">
         <property name="styleSheet">
          <string notr="true">border-color: rgb(0, 0, 0);
 border: 1px solid #cccccc;</string>
@@ -727,14 +750,26 @@ border: 1px solid #cccccc;</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="units_label">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="mu_input_lineEdit">
         <property name="styleSheet">
-         <string notr="true">border: 1px solid #007bff;
-</string>
+         <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid #cccccc;</string>
         </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="servers_input_lineEdit">
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid #cccccc;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="servers_label">
         <property name="text">
-         <string>Unidades (n)</string>
+         <string>Servidores</string>
         </property>
        </widget>
       </item>
@@ -763,6 +798,38 @@ border: none;</string>
      <property name="text">
       <string>Modelo</string>
      </property>
+    </widget>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>134</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="singleServer_radioButton">
+        <property name="text">
+         <string>un servidor</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="multiServer_radioButton">
+        <property name="text">
+         <string>varios servidores</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>
