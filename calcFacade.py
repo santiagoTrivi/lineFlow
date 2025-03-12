@@ -106,8 +106,15 @@ class CalcFacade(QWidget):
             units = int(self.mainWindow.units.text())
             self.mainWindow.results = multiple_calculate_limited(lambda_val, mu_val, servers,units)
             self.mainWindow.lambdaEff.setText(f"{self.mainWindow.results['Lambda_eff']:.4f}")
+            self.mainWindow.inactiveServers.setText(f"{self.mainWindow.results['inactive']:.4f}")
         else:
-            self.mainWindow.results = multiple_calculate_unlimited(lambda_val, mu_val, servers)
+            
+            try:
+                self.mainWindow.results = multiple_calculate_unlimited(lambda_val, mu_val, servers)
+            except ValueError as e:
+                QMessageBox.warning(self, "Error", str(e))
+                return
+
         # Display results
         self.mainWindow.rho.setText(f"{self.mainWindow.results['Rho']:.4f}")
         self.mainWindow.po.setText(f"{self.mainWindow.results['Po']:.4f}")
