@@ -49,6 +49,9 @@ class MainWindow(QMainWindow):
         self.ui.servers_input_lineEdit.hide()
         self.ui.servers_label.hide()
 
+        self.ui.inactive_servers_label.hide()
+        self.ui.inactive_servers_output_label.hide()
+
         # Resultados
         self.results = None
         self.rho = self.ui.rho_output_label
@@ -58,6 +61,7 @@ class MainWindow(QMainWindow):
         self.ws = self.ui.ws_output_label
         self.wq = self.ui.wq_output_label
         self.lambdaEff = self.ui.lambda_eff_output_label
+        self.inactiveServers = self.ui.inactive_servers_output_label
         self.prod_dist = self.ui.prodDist_tableWidget
         self.prod_dist.setColumnWidth(0, 80)
         self.prod_dist.setColumnWidth(1, 220)
@@ -112,6 +116,7 @@ class MainWindow(QMainWindow):
         self.singleServer.setChecked(False)
         self.multiServer.setChecked(False)
         self.servers.clear()
+        self.inactiveServers.clear()
         self.results = None
 
     def events(self):
@@ -143,6 +148,7 @@ class MainWindow(QMainWindow):
         self.ui.lambda_eff_output_label.show()
         self.ui.units_label.show()
         self.ui.units_input_lineEdit.show()
+        self.limitedMultiserversMode()
 
     def setMultiServerMode(self):
         self.ui.servers_label.show()
@@ -161,6 +167,14 @@ class MainWindow(QMainWindow):
     def handle_directory(self, path):
         if not os.path.exists(path):
             os.makedirs(path)
+
+    def limitedMultiserversMode(self):
+        if self.multiServer.isChecked() and self.isLimited.isChecked():
+            self.inactiveServers.show()
+            self.ui.inactive_servers_label.show()
+        else:
+            self.inactiveServers.hide()
+            self.ui.inactive_servers_label.hide()
 
     def pdf_export(self):
         # Export results to PDF
@@ -186,7 +200,12 @@ class MainWindow(QMainWindow):
         estilo_titulo = ParagraphStyle('TitleStyle', parent=estilos['Title'], fontSize=18, fontName='Helvetica-Bold')
     
         # Title
-        titulo = Paragraph("Resultados de la Calculadora de Líneas de Espera", estilo_titulo)
+        titulo_texto = "Resultados de la Calculadora de Líneas de Espera"
+        if self.multiServer.isChecked() == True:
+            titulo_texto = titulo_texto + " con Vario Servidores"
+
+
+        titulo = Paragraph(titulo_texto, estilo_titulo)
         # Basic results
         data1 = [["Resultados Básicos", ""],
                  ["Parámetro", "Valor"]]
@@ -203,6 +222,9 @@ class MainWindow(QMainWindow):
 
         if self.isLimited.isChecked() and 'Lambda_eff' in self.results:
             data1.append(["Lambda Efectiva", f"{self.results['Lambda_eff']:.4f}"])
+        
+        if self.multiServer.isChecked() and self.isLimited.isChecked():
+            data1.append(["Servidores inactivos", f"{self.results['inactive']:.4f}"])
 
         # Probability distribution
         data2 = [["Distribución de Probabilidad", ""],

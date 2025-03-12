@@ -149,112 +149,9 @@ border:none;</string>
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>10</y>
-        <width>241</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border:none;</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QLabel" name="ws_label">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #007bff;
-</string>
-         </property>
-         <property name="text">
-          <string>Ws</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="wq_label">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #007bff;
-</string>
-         </property>
-         <property name="text">
-          <string>Wq</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="2">
-        <widget class="QLabel" name="wq_output_label">
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #cccccc;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lambda_eff_label">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #007bff;
-</string>
-         </property>
-         <property name="text">
-          <string>Lambda eff</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="2">
-        <widget class="QLabel" name="lambda_eff_output_label">
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #cccccc;
-</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="2">
-        <widget class="QLabel" name="ws_output_label">
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid #cccccc;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QFrame" name="frame">
-      <property name="geometry">
-       <rect>
         <x>10</x>
         <y>10</y>
-        <width>231</width>
+        <width>191</width>
         <height>141</height>
        </rect>
       </property>
@@ -380,6 +277,138 @@ border: 1px solid #cccccc;</string>
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>10</y>
+        <width>191</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="2" column="1" colspan="2">
+        <widget class="QLabel" name="lambda_eff_output_label">
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #cccccc;
+</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLabel" name="ws_output_label">
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #cccccc;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="wq_label">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #007bff;
+</string>
+         </property>
+         <property name="text">
+          <string>Wq</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="ws_label">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #007bff;
+</string>
+         </property>
+         <property name="text">
+          <string>Ws</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lambda_eff_label">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #007bff;
+</string>
+         </property>
+         <property name="text">
+          <string>Lambda eff</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLabel" name="wq_output_label">
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #cccccc;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="inactive_servers_label">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>20</y>
+        <width>41</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>c̅</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="inactive_servers_output_label">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>20</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #cccccc;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -769,7 +798,7 @@ border: 1px solid #cccccc;</string>
       <item row="3" column="0">
        <widget class="QLabel" name="servers_label">
         <property name="text">
-         <string>Servidores</string>
+         <string>Servidores (c)</string>
         </property>
        </widget>
       </item>

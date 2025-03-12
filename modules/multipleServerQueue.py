@@ -51,6 +51,10 @@ def calculate_prob_dist_unlimited(lambda_, mu, servers ,Po):
 
 def multiple_calculate_unlimited(lambda_, mu, servers):
 	rho = lambda_ / mu
+
+	if rho >= servers:
+		raise ValueError(f"Rho ({rho}) debe ser menor que la cantidad de servidores ({servers}).")
+
 	Po = PzeroUnlimited(rho, servers)
 	Lq = (((lambda_*mu)*((lambda_/mu)**servers))/(factorial(servers-1)*((servers*mu-lambda_)**2)))*Po
 	Ls = Lq + rho
