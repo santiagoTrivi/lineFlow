@@ -107,6 +107,7 @@ class CalcFacade(QWidget):
             self.mainWindow.results = multiple_calculate_limited(lambda_val, mu_val, servers,units)
             self.mainWindow.lambdaEff.setText(f"{self.mainWindow.results['Lambda_eff']:.4f}")
             self.mainWindow.inactiveServers.setText(f"{self.mainWindow.results['inactive']:.4f}")
+            self.mainWindow.server_rate.setText(f"{self.mainWindow.results['server_rate']:.4f}")
         else:
             
             try:
