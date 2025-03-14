@@ -27,8 +27,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        width = 920
-        height = 533
+        width = 940
+        height = 570
         # setting  the fixed size of window
         self.setFixedSize(width, height)
 
@@ -52,6 +52,9 @@ class MainWindow(QMainWindow):
         self.ui.inactive_servers_label.hide()
         self.ui.inactive_servers_output_label.hide()
 
+        self.ui.server_rate_output_label.hide()
+        self.ui.server_rate_label.hide()
+
         # Resultados
         self.results = None
         self.rho = self.ui.rho_output_label
@@ -62,6 +65,7 @@ class MainWindow(QMainWindow):
         self.wq = self.ui.wq_output_label
         self.lambdaEff = self.ui.lambda_eff_output_label
         self.inactiveServers = self.ui.inactive_servers_output_label
+        self.server_rate = self.ui.server_rate_output_label
         self.prod_dist = self.ui.prodDist_tableWidget
         self.prod_dist.setColumnWidth(0, 80)
         self.prod_dist.setColumnWidth(1, 220)
@@ -116,6 +120,7 @@ class MainWindow(QMainWindow):
         self.singleServer.setChecked(False)
         self.multiServer.setChecked(False)
         self.servers.clear()
+        self.server_rate.clear()
         self.inactiveServers.clear()
         self.results = None
 
@@ -141,6 +146,7 @@ class MainWindow(QMainWindow):
         self.ui.lambda_eff_output_label.hide()
         self.ui.units_label.hide()
         self.ui.units_input_lineEdit.hide()
+        self.limitedMultiserversMode()
 
     def setLimitedModel(self):
         # Show fields for limited model
@@ -172,9 +178,13 @@ class MainWindow(QMainWindow):
         if self.multiServer.isChecked() and self.isLimited.isChecked():
             self.inactiveServers.show()
             self.ui.inactive_servers_label.show()
-        else:
+            self.server_rate.show()
+            self.ui.server_rate_label.show()
+        elif self.multiServer.isChecked() and self.isUnlimited.isChecked():
             self.inactiveServers.hide()
             self.ui.inactive_servers_label.hide()
+            self.server_rate.hide()
+            self.ui.server_rate_label.hide()
 
     def pdf_export(self):
         # Export results to PDF
@@ -237,23 +247,23 @@ class MainWindow(QMainWindow):
 
         style1 = TableStyle([
             ('SPAN', (0, 0), (-1, 0)),
-            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('BACKGROUND', (0, 0), (-1, 0), colors.blue),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
             ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
             ('BOTTOMPADDING', (0, -1), (0, 0), 12),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.white),
             ('GRID', (0, 0), (-1, -1), 1, colors.black)
         ])
 
         style2 = TableStyle([
             ('SPAN', (0, 0), (-1, 0)),
-            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('BACKGROUND', (0, 0), (-1, 0), colors.blue),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
             ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
             ('BOTTOMPADDING', (0, -1), (0, 0), 12),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.white),
             ('GRID', (0, 0), (-1, -1), 1, colors.black)
         ])
 

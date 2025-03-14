@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>917</width>
-    <height>556</height>
+    <width>945</width>
+    <height>593</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,8 +23,8 @@ font-family: Arial, sans-serif;</string>
      <rect>
       <x>330</x>
       <y>90</y>
-      <width>581</width>
-      <height>421</height>
+      <width>601</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -42,8 +42,8 @@ padding: 2px;</string>
     <widget class="QTableWidget" name="prodDist_tableWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>240</y>
+       <x>20</x>
+       <y>260</y>
        <width>561</width>
        <height>171</height>
       </rect>
@@ -81,7 +81,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>5</y>
+       <y>20</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -90,14 +90,12 @@ color: rgb(0, 0, 0);</string>
       <font>
        <family>Arial</family>
        <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(0, 0, 0);
 font-size: 16px;
-border:none;</string>
+border: none;</string>
      </property>
      <property name="text">
       <string>Resultados</string>
@@ -106,8 +104,8 @@ border:none;</string>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>200</y>
+       <x>20</x>
+       <y>220</y>
        <width>321</width>
        <height>31</height>
       </rect>
@@ -130,8 +128,8 @@ border:none;</string>
     <widget class="QFrame" name="frame_3">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>30</y>
+       <x>20</x>
+       <y>50</y>
        <width>561</width>
        <height>161</height>
       </rect>
@@ -385,16 +383,45 @@ border: 1px solid #cccccc;</string>
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>20</y>
-        <width>41</width>
+        <y>60</y>
+        <width>51</width>
         <height>25</height>
        </rect>
       </property>
       <property name="text">
-       <string>c̅</string>
+       <string>    c̅</string>
       </property>
      </widget>
      <widget class="QLabel" name="inactive_servers_output_label">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>60</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #cccccc;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="server_rate_label">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>20</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rho/c</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="server_rate_output_label">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -417,9 +444,15 @@ border: 1px solid #cccccc;</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>901</width>
+      <width>921</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
@@ -437,18 +470,17 @@ border-radius:5px;</string>
       <rect>
        <x>70</x>
        <y>20</y>
-       <width>171</width>
+       <width>191</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Arial</family>
-       <pointsize>22</pointsize>
+       <pointsize>25</pointsize>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
-       <strikeout>false</strikeout>
       </font>
      </property>
      <property name="styleSheet">
@@ -484,10 +516,17 @@ border-radius:5px;</string>
      <property name="geometry">
       <rect>
        <x>800</x>
-       <y>30</y>
-       <width>75</width>
-       <height>23</height>
+       <y>20</y>
+       <width>101</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: #007bff;
@@ -507,7 +546,7 @@ border: none;</string>
       <x>10</x>
       <y>90</y>
       <width>321</width>
-      <height>421</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -527,7 +566,7 @@ padding: 2px;</string>
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>370</y>
+       <y>400</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -561,7 +600,7 @@ border: none;
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>370</y>
+       <y>400</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -593,8 +632,8 @@ border: none;</string>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>140</y>
+       <x>30</x>
+       <y>190</y>
        <width>71</width>
        <height>21</height>
       </rect>
@@ -603,14 +642,12 @@ border: none;</string>
       <font>
        <family>Arial</family>
        <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #333333;
+      <string notr="true">color: rgb(0, 0, 0);
 font-size: 16px;
-border:none;</string>
+border: none;</string>
      </property>
      <property name="text">
       <string>Entrada</string>
@@ -620,7 +657,7 @@ border:none;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>370</y>
+       <y>400</y>
        <width>75</width>
        <height>31</height>
       </rect>
@@ -647,9 +684,9 @@ border: none;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>70</y>
+       <y>130</y>
        <width>251</width>
-       <height>61</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -664,7 +701,7 @@ border: none;</string>
         <x>140</x>
         <y>10</y>
         <width>101</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -691,7 +728,7 @@ border-radius: 4px;
         <x>10</x>
         <y>10</y>
         <width>101</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -715,7 +752,7 @@ border-radius: 4px;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>170</y>
+       <y>210</y>
        <width>251</width>
        <height>171</height>
       </rect>
@@ -797,6 +834,10 @@ border: 1px solid #cccccc;</string>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="servers_label">
+        <property name="styleSheet">
+         <string notr="true">border: 1px solid #007bff;
+</string>
+        </property>
         <property name="text">
          <string>Servidores (c)</string>
         </property>
@@ -807,8 +848,8 @@ border: 1px solid #cccccc;</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>30</y>
+       <x>30</x>
+       <y>10</y>
        <width>71</width>
        <height>21</height>
       </rect>
@@ -831,10 +872,10 @@ border: none;</string>
     <widget class="QFrame" name="frame_2">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>0</y>
-       <width>134</width>
-       <height>70</height>
+       <x>30</x>
+       <y>40</y>
+       <width>251</width>
+       <height>81</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -846,6 +887,18 @@ border: none;</string>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
        <widget class="QRadioButton" name="singleServer_radioButton">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;</string>
+        </property>
         <property name="text">
          <string>un servidor</string>
         </property>
@@ -853,6 +906,18 @@ border: none;</string>
       </item>
       <item row="1" column="0">
        <widget class="QRadioButton" name="multiServer_radioButton">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;</string>
+        </property>
         <property name="text">
          <string>varios servidores</string>
         </property>
@@ -867,7 +932,7 @@ border: none;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>917</width>
+     <width>945</width>
      <height>21</height>
     </rect>
    </property>

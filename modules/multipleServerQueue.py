@@ -141,6 +141,7 @@ def multiple_calculate_limited(lambda_, mu, servers, N):
 	Pn = ProbPn_limited(lambda_, mu, servers, N, Po, N)
 	lambda_eff = lambda_ * (1 - Pn)
 	lambda_loss = lambda_ - lambda_eff
+	server_rate = rho/servers
 	return {
 		"Lambda": lambda_,
 		"Mu": mu,
@@ -153,5 +154,6 @@ def multiple_calculate_limited(lambda_, mu, servers, N):
 		"Wq": Wq,
 		"Lambda_eff": lambda_eff,
 		"lambda_loss": lambda_loss,
+		"server_rate": server_rate,
 		"Prob_dist": calculate_prob_dist_limited(lambda_, mu, servers ,Po, N)
 	}
