@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (
 QApplication, 
     QMainWindow,
     QMessageBox,
-    QTableWidgetItem
+    QTableWidgetItem,
 )
 from PyQt5.QtGui import QDoubleValidator, QIcon
 from lineFlow import Ui_MainWindow
@@ -19,6 +19,7 @@ import datetime
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import Paragraph
 from calcFacade import CalcFacade
+from maingenerator import MainGenerator
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -100,6 +101,8 @@ class MainWindow(QMainWindow):
         self.multiServer.clicked.connect(self.setMultiServerMode)
 
         self.ui.open_reports_pushButton.clicked.connect(self.open_reports)
+
+        self.ui.openGeneratorWindow.triggered.connect(self.openGeneratorWindow)
 
     def clean_all(self):
         # Clear all fields and reset the UI
@@ -275,6 +278,10 @@ class MainWindow(QMainWindow):
         elements = [titulo, Spacer(1, 12), table1, spacer, table2]
         document.build(elements)
         QMessageBox.information(self, "Éxito", f"Reporte exportado como {filename}")
+
+    def openGeneratorWindow(self):
+        self.generator = MainGenerator()
+        self.generator.show()
 
 if __name__ == "__main__":
     

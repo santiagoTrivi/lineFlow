@@ -936,8 +936,20 @@ border-radius: 4px;</string>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>Herramientas</string>
+    </property>
+    <addaction name="openGeneratorWindow"/>
+   </widget>
+   <addaction name="menuHerramientas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="openGeneratorWindow">
+   <property name="text">
+    <string>Generator de numeros aleatorios</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="icons/logo.qrc"/>

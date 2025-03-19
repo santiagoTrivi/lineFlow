@@ -6,6 +6,8 @@ pip install pyqt5
 pip install pyqt5-tools
 
 pip reportlab
+
+pip install numpy
 ```
 
 # Steps to develop this calculator
@@ -14,6 +16,8 @@ pip reportlab
 
 ```
 pyuic5 -x lineFlow.ui -o lineFlow.py
+
+pyuic5 -x Generator.ui -o Generator.py
 ```
 
 2. To get images ready

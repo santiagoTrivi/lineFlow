@@ -426,10 +426,16 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 945, 21))
         self.menubar.setObjectName("menubar")
+        self.menuHerramientas = QtWidgets.QMenu(self.menubar)
+        self.menuHerramientas.setObjectName("menuHerramientas")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.openGeneratorWindow = QtWidgets.QAction(MainWindow)
+        self.openGeneratorWindow.setObjectName("openGeneratorWindow")
+        self.menuHerramientas.addAction(self.openGeneratorWindow)
+        self.menubar.addAction(self.menuHerramientas.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -469,6 +475,8 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Modelo"))
         self.singleServer_radioButton.setText(_translate("MainWindow", "un servidor"))
         self.multiServer_radioButton.setText(_translate("MainWindow", "varios servidores"))
+        self.menuHerramientas.setTitle(_translate("MainWindow", "Herramientas"))
+        self.openGeneratorWindow.setText(_translate("MainWindow", "Generator de numeros aleatorios"))
 import logo_rc
 
 
