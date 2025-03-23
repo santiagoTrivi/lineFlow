@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>944</width>
-    <height>600</height>
+    <width>943</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,10 +18,15 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
-      <width>341</width>
-      <height>401</height>
+      <y>90</y>
+      <width>391</width>
+      <height>501</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid #007bff;
+border-radius:5px;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -32,10 +37,10 @@
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>301</width>
-       <height>80</height>
+       <x>40</x>
+       <y>110</y>
+       <width>311</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -47,11 +52,25 @@
      <widget class="QRadioButton" name="poisson_radioButton">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>10</y>
-        <width>82</width>
-        <height>17</height>
+        <width>121</width>
+        <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+padding: 2px;</string>
       </property>
       <property name="text">
        <string>Poisson</string>
@@ -60,14 +79,28 @@
      <widget class="QRadioButton" name="exponencial_radioButton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>82</width>
-        <height>17</height>
+        <x>180</x>
+        <y>10</y>
+        <width>121</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+padding: 2px;</string>
+      </property>
       <property name="text">
-       <string>exponencial</string>
+       <string>Exponencial</string>
       </property>
      </widget>
     </widget>
@@ -75,23 +108,60 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>350</y>
-       <width>75</width>
-       <height>23</height>
+       <y>410</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+
+border: none;</string>
      </property>
      <property name="text">
       <string>Calcular</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="pdf_export_pushButton">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>350</y>
-       <width>75</width>
-       <height>23</height>
+       <x>150</x>
+       <y>410</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+
+border: none;</string>
      </property>
      <property name="text">
       <string>Exportar</string>
@@ -100,11 +170,25 @@
     <widget class="QPushButton" name="clean_pushButton">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>350</y>
-       <width>75</width>
-       <height>23</height>
+       <x>280</x>
+       <y>410</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+
+border: none;</string>
      </property>
      <property name="text">
       <string>Limpiar</string>
@@ -113,24 +197,36 @@
     <widget class="QLabel" name="lambda_label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>47</width>
-       <height>13</height>
+       <x>20</x>
+       <y>190</y>
+       <width>191</width>
+       <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #007bff;</string>
+     </property>
      <property name="text">
-      <string>lambda</string>
+      <string>Lambda (λ)</string>
      </property>
     </widget>
     <widget class="QLabel" name="variables_amount_label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>200</y>
-       <width>111</width>
-       <height>16</height>
+       <x>20</x>
+       <y>250</y>
+       <width>191</width>
+       <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #007bff;
+</string>
      </property>
      <property name="text">
       <string>Numeros de variables</string>
@@ -139,11 +235,15 @@
     <widget class="QLabel" name="random_numbers_amount_label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>230</y>
-       <width>161</width>
-       <height>16</height>
+       <x>20</x>
+       <y>310</y>
+       <width>191</width>
+       <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #007bff;
+</string>
      </property>
      <property name="text">
       <string>Cantidad de numeros aleatorios</string>
@@ -152,42 +252,85 @@
     <widget class="QLineEdit" name="lambda_input_lineEdit">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>170</y>
+       <x>240</x>
+       <y>190</y>
        <width>113</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid #cccccc;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="variables_amount_input_lineEdit">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>200</y>
+       <x>240</x>
+       <y>250</y>
        <width>113</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid #cccccc;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="random_numbers_amount_input_lineEdit">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>230</y>
+       <x>240</x>
+       <y>310</y>
        <width>113</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid #cccccc;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>351</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+padding: 16px;</string>
+     </property>
+     <property name="text">
+      <string>  Generador de numeros aleatorios</string>
      </property>
     </widget>
    </widget>
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>40</y>
-      <width>541</width>
+      <x>410</x>
+      <y>90</y>
+      <width>521</width>
       <height>501</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid #007bff;
+border-radius:5px;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -198,40 +341,136 @@
     <widget class="QTableWidget" name="database_tableView">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>10</y>
+       <width>501</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
        <width>511</width>
        <height>481</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="statistics_tableView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>360</y>
+       <width>501</width>
+       <height>131</height>
       </rect>
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="open_reports_pushButton">
+   <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>20</x>
       <y>10</y>
-      <width>75</width>
-      <height>23</height>
+      <width>911</width>
+      <height>71</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Abril reportes</string>
+    <property name="font">
+     <font>
+      <family>Arial,sans-serif</family>
+     </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid #007bff;
+border-radius:5px;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial,sans-serif</family>
+       <pointsize>25</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="text">
+      <string>LineFlow</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="open_reports_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>20</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #007bff;
+color: #ffffff;
+border-radius: 4px;
+
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>Abrir reportes</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="icons/logo.qrc">:/prefijoNuevo/wind.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>944</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <zorder>frame_5</zorder>
+   <zorder>frame_2</zorder>
+   <zorder>frame_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons/logo.qrc"/>
+ </resources>
  <connections/>
 </ui>

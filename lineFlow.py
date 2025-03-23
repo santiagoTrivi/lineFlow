@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(945, 593)
+        MainWindow.resize(935, 593)
         MainWindow.setStyleSheet("background-color: rgb(207, 207, 207);\n"
 "font-family: Arial, sans-serif;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.label_6 = QtWidgets.QLabel(self.frame_4)
         self.label_6.setGeometry(QtCore.QRect(20, 20, 101, 21))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setPointSize(-1)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("color: rgb(0, 0, 0);\n"
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         self.label_8 = QtWidgets.QLabel(self.frame_4)
         self.label_8.setGeometry(QtCore.QRect(20, 220, 321, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setPointSize(-1)
         self.label_8.setFont(font)
         self.label_8.setStyleSheet("color: rgb(0, 0, 0);\n"
@@ -80,7 +80,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.lq_label = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.lq_label.setFont(font)
         self.lq_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.lq_output_label, 3, 1, 1, 2)
         self.rho_label = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.rho_label.setFont(font)
         self.rho_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.rho_output_label, 0, 1, 1, 2)
         self.po_label = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.po_label.setFont(font)
         self.po_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.po_label, 1, 0, 1, 1)
         self.ls_label = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.ls_label.setFont(font)
         self.ls_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -156,7 +156,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.ws_output_label, 0, 1, 1, 2)
         self.wq_label = QtWidgets.QLabel(self.frame1)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.wq_label.setFont(font)
         self.wq_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -164,7 +164,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.wq_label, 1, 0, 1, 1)
         self.ws_label = QtWidgets.QLabel(self.frame1)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.ws_label.setFont(font)
         self.ws_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -172,7 +172,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.ws_label, 0, 0, 1, 1)
         self.lambda_eff_label = QtWidgets.QLabel(self.frame1)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         self.lambda_eff_label.setFont(font)
         self.lambda_eff_label.setStyleSheet("border: 1px solid #007bff;\n"
 "")
@@ -203,8 +203,7 @@ class Ui_MainWindow(object):
         self.frame_5 = QtWidgets.QFrame(self.centralwidget)
         self.frame_5.setGeometry(QtCore.QRect(10, 10, 921, 71))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setItalic(True)
+        font.setFamily("Arial,sans-serif")
         self.frame_5.setFont(font)
         self.frame_5.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: 1px solid #007bff;\n"
@@ -215,10 +214,9 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(self.frame_5)
         self.label_5.setGeometry(QtCore.QRect(70, 20, 191, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setPointSize(25)
         font.setBold(True)
-        font.setItalic(True)
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setStyleSheet("border:none;")
@@ -233,7 +231,7 @@ class Ui_MainWindow(object):
         self.open_reports_pushButton = QtWidgets.QPushButton(self.frame_5)
         self.open_reports_pushButton.setGeometry(QtCore.QRect(800, 20, 101, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setBold(True)
         font.setWeight(75)
         self.open_reports_pushButton.setFont(font)
@@ -256,7 +254,7 @@ class Ui_MainWindow(object):
         self.clean_pushButton = QtWidgets.QPushButton(self.frame2)
         self.clean_pushButton.setGeometry(QtCore.QRect(200, 400, 91, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setBold(True)
         font.setWeight(75)
         self.clean_pushButton.setFont(font)
@@ -271,7 +269,7 @@ class Ui_MainWindow(object):
         self.pdf_export_pushButton = QtWidgets.QPushButton(self.frame2)
         self.pdf_export_pushButton.setGeometry(QtCore.QRect(100, 400, 91, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setBold(True)
         font.setWeight(75)
         self.pdf_export_pushButton.setFont(font)
@@ -285,7 +283,7 @@ class Ui_MainWindow(object):
         self.label_7 = QtWidgets.QLabel(self.frame2)
         self.label_7.setGeometry(QtCore.QRect(30, 190, 71, 21))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setPointSize(-1)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("color: rgb(0, 0, 0);\n"
@@ -295,7 +293,7 @@ class Ui_MainWindow(object):
         self.calculate_pushButton = QtWidgets.QPushButton(self.frame2)
         self.calculate_pushButton.setGeometry(QtCore.QRect(20, 400, 75, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setBold(True)
         font.setWeight(75)
         self.calculate_pushButton.setFont(font)
@@ -313,9 +311,7 @@ class Ui_MainWindow(object):
         self.limited_radioButton = QtWidgets.QRadioButton(self.frame_6)
         self.limited_radioButton.setGeometry(QtCore.QRect(140, 10, 101, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Arial,sans-serif")
         self.limited_radioButton.setFont(font)
         self.limited_radioButton.setStyleSheet("background-color: #007bff;\n"
 "color: #ffffff;\n"
@@ -326,9 +322,7 @@ class Ui_MainWindow(object):
         self.unlimited_radioButton = QtWidgets.QRadioButton(self.frame_6)
         self.unlimited_radioButton.setGeometry(QtCore.QRect(10, 10, 101, 31))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Arial,sans-serif")
         self.unlimited_radioButton.setFont(font)
         self.unlimited_radioButton.setStyleSheet("background-color: #007bff;\n"
 "color: #ffffff;\n"
@@ -386,7 +380,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.frame2)
         self.label.setGeometry(QtCore.QRect(30, 10, 71, 21))
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial,sans-serif")
         font.setPointSize(-1)
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(0, 0, 0);\n"
@@ -395,6 +389,7 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.frame_2 = QtWidgets.QFrame(self.frame2)
         self.frame_2.setGeometry(QtCore.QRect(30, 40, 251, 81))
+        self.frame_2.setStyleSheet("")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -402,9 +397,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.singleServer_radioButton = QtWidgets.QRadioButton(self.frame_2)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Arial,sans-serif")
         self.singleServer_radioButton.setFont(font)
         self.singleServer_radioButton.setStyleSheet("background-color: #007bff;\n"
 "color: #ffffff;\n"
@@ -413,9 +406,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.singleServer_radioButton, 0, 0, 1, 1)
         self.multiServer_radioButton = QtWidgets.QRadioButton(self.frame_2)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Arial,sans-serif")
         self.multiServer_radioButton.setFont(font)
         self.multiServer_radioButton.setStyleSheet("background-color: #007bff;\n"
 "color: #ffffff;\n"
@@ -424,7 +415,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.multiServer_radioButton, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 945, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 935, 23))
         self.menubar.setObjectName("menubar")
         self.menuHerramientas = QtWidgets.QMenu(self.menubar)
         self.menuHerramientas.setObjectName("menuHerramientas")
@@ -433,6 +424,9 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.openGeneratorWindow = QtWidgets.QAction(MainWindow)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.openGeneratorWindow.setFont(font)
         self.openGeneratorWindow.setObjectName("openGeneratorWindow")
         self.menuHerramientas.addAction(self.openGeneratorWindow)
         self.menubar.addAction(self.menuHerramientas.menuAction())
@@ -475,8 +469,8 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Modelo"))
         self.singleServer_radioButton.setText(_translate("MainWindow", "un servidor"))
         self.multiServer_radioButton.setText(_translate("MainWindow", "varios servidores"))
-        self.menuHerramientas.setTitle(_translate("MainWindow", "Herramientas"))
-        self.openGeneratorWindow.setText(_translate("MainWindow", "Generator de numeros aleatorios"))
+        self.menuHerramientas.setTitle(_translate("MainWindow", "Metodo"))
+        self.openGeneratorWindow.setText(_translate("MainWindow", "Montecarlo"))
 import logo_rc
 
 
