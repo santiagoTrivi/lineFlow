@@ -34,8 +34,11 @@ class MainGenerator(QMainWindow):
         self.variables_amount_input = self.ui.variables_amount_input_lineEdit
 
         self.results = None
+        self.statistics = None
 
         self.database = self.ui.database_tableView
+        self.data_std = self.ui.statistics_tableView
+
 
         self.setValidators()
         self.init_actions()
@@ -54,6 +57,11 @@ class MainGenerator(QMainWindow):
 
 
     def events(self):
+
+        if not self.ui.poisson_radioButton.isChecked() and not self.ui.exponencial_radioButton.isChecked():
+            QMessageBox.warning(self, "Error", "Por favor, seleccione una distribución de probabilidad antes de calcular los valores.")
+            return
+
         try: 
             lambda_ = float(self.lambda_input.text())
             random_numbers_amount = int(self.random_numbers_amount_input.text())
@@ -73,6 +81,8 @@ class MainGenerator(QMainWindow):
             self.results = randomExponentialNumbers(lambda_, variables_amount, random_numbers_amount)
         
 
+        self.statistics = self.results
+        self.results = self.results["matrix"]
         self.populate_table()
 
 
@@ -90,6 +100,20 @@ class MainGenerator(QMainWindow):
                     else:
                         self.database.setItem(row, col, QTableWidgetItem(f"{value:.4f}"))
 
+        if self.statistics:
+            self.data_std.setColumnCount(len(self.results[0]) + 1)
+            self.data_std.setRowCount(2)
+            header = [f"X{i}" for i in range(1, len(self.results[0]) + 1)]
+            header.insert(0, "Cal")
+            self.data_std.setHorizontalHeaderLabels(header)
+
+            self.data_std.setItem(0, 0, QTableWidgetItem("Promedio"))
+            self.data_std.setItem(1, 0, QTableWidgetItem("Desviación estandard"))
+
+            for col, item in enumerate(self.statistics["averages"]):
+                self.data_std.setItem(0, col + 1, QTableWidgetItem(f"{item:.2f}"))
+                self.data_std.setItem(1, col + 1, QTableWidgetItem(f"{self.statistics['standard_deviations'][col]:.4f}"))
+
 
     def clean_all(self):
         # Clear all fields and reset the UI
@@ -99,6 +123,9 @@ class MainGenerator(QMainWindow):
         self.database.clearContents()
         self.database.setRowCount(0)
         self.results = None
+        self.data_std.clearContents()
+        self.data_std.setRowCount(0)
+        self.statistics = None
 
     def open_reports(self):
         path = os.path.join(os.getcwd(), "reportes")
@@ -140,7 +167,20 @@ class MainGenerator(QMainWindow):
             else:
                 data.append([f"{value:.4f}" for value in item])
 
+        data_statistics_header =  [f"X{i}" for i in range(1, len(self.results[0]) + 1)]
+        data_statistics_header.insert(0, "Cal")
+        data_statistics = [["Datos estatísticos", ""], data_statistics_header]
+
+        data_average = [f"{value:.2f}" for value in self.statistics["averages"]]
+        data_average.insert(0, "Promedio")
+        data_standard_deviation = [f"{value:.4f}" for value in self.statistics["standard_deviations"]]
+        data_standard_deviation.insert(0, "Desviación estandard")
+        data_statistics.append(data_average)
+        data_statistics.append(data_standard_deviation)
+
+
         table = Table(data)
+        table2 = Table(data_statistics)
 
         style = TableStyle([
             ('SPAN', (0, 0), (-1, 0)),
@@ -155,7 +195,9 @@ class MainGenerator(QMainWindow):
 
         table.setStyle(style)
 
-        elements = [titulo, Spacer(1, 12), table]
+        table2.setStyle(style)
+
+        elements = [titulo, Spacer(1, 12), table, Spacer(1, 20), table2]
         document.build(elements)
 
         QMessageBox.information(self, "Éxito", f"Reporte exportado como {filename}")

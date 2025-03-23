@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>945</width>
+    <width>935</width>
     <height>593</height>
    </rect>
   </property>
@@ -88,7 +88,7 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <pointsize>-1</pointsize>
       </font>
      </property>
@@ -112,7 +112,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <pointsize>-1</pointsize>
       </font>
      </property>
@@ -161,7 +161,7 @@ border:none;</string>
         <widget class="QLabel" name="lq_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -190,7 +190,7 @@ border:none;</string>
         <widget class="QLabel" name="rho_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -220,7 +220,7 @@ border: 1px solid #cccccc;</string>
         <widget class="QLabel" name="po_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -236,7 +236,7 @@ border: 1px solid #cccccc;</string>
         <widget class="QLabel" name="ls_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -320,7 +320,7 @@ border: 1px solid #cccccc;</string>
         <widget class="QLabel" name="wq_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -336,7 +336,7 @@ border: 1px solid #cccccc;</string>
         <widget class="QLabel" name="ws_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -352,7 +352,7 @@ border: 1px solid #cccccc;</string>
         <widget class="QLabel" name="lambda_eff_label">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Arial,sans-serif</family>
           </font>
          </property>
          <property name="styleSheet">
@@ -450,8 +450,7 @@ border: 1px solid #cccccc;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <italic>true</italic>
+      <family>Arial,sans-serif</family>
      </font>
     </property>
     <property name="styleSheet">
@@ -476,10 +475,9 @@ border-radius:5px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <pointsize>25</pointsize>
        <weight>75</weight>
-       <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
@@ -523,7 +521,7 @@ border-radius:5px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -573,7 +571,7 @@ padding: 2px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -607,7 +605,7 @@ border: none;
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -640,7 +638,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <pointsize>-1</pointsize>
       </font>
      </property>
@@ -664,7 +662,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -706,9 +704,7 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Arial,sans-serif</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -733,9 +729,7 @@ border-radius: 4px;
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Arial,sans-serif</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -856,7 +850,7 @@ border: 1px solid #cccccc;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>Arial,sans-serif</family>
        <pointsize>-1</pointsize>
       </font>
      </property>
@@ -878,6 +872,9 @@ border: none;</string>
        <height>81</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -889,9 +886,7 @@ border: none;</string>
        <widget class="QRadioButton" name="singleServer_radioButton">
         <property name="font">
          <font>
-          <family>Arial</family>
-          <weight>75</weight>
-          <bold>true</bold>
+          <family>Arial,sans-serif</family>
          </font>
         </property>
         <property name="styleSheet">
@@ -908,9 +903,7 @@ border-radius: 4px;</string>
        <widget class="QRadioButton" name="multiServer_radioButton">
         <property name="font">
          <font>
-          <family>Arial</family>
-          <weight>75</weight>
-          <bold>true</bold>
+          <family>Arial,sans-serif</family>
          </font>
         </property>
         <property name="styleSheet">
@@ -932,13 +925,13 @@ border-radius: 4px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>945</width>
-     <height>21</height>
+     <width>935</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHerramientas">
     <property name="title">
-     <string>Herramientas</string>
+     <string>Metodo</string>
     </property>
     <addaction name="openGeneratorWindow"/>
    </widget>
@@ -947,7 +940,12 @@ border-radius: 4px;</string>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="openGeneratorWindow">
    <property name="text">
-    <string>Generator de numeros aleatorios</string>
+    <string>Montecarlo</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
    </property>
   </action>
  </widget>
