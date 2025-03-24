@@ -7,15 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>935</width>
-    <height>593</height>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(207, 207, 207);
-font-family: Arial, sans-serif;</string>
+   <string notr="true">background-color: rgb(255, 255, 255);
+selection-color: rgb(255, 255, 255);
+font-family: Arial, sans-serif;
+color: rgb(0, 0, 127);
+alternate-background-color: rgb(85, 170, 255);
+selection-background-color: #007bff</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="frame_4">
@@ -136,7 +140,7 @@ border:none;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid #007bff;
-</string>
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -482,7 +486,8 @@ border-radius:5px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border:none;</string>
+      <string notr="true">border:none;
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>LineFlow</string>
@@ -752,7 +757,8 @@ border-radius: 4px;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border:none;</string>
+      <string notr="true">border:none;
+color: rgb(0, 0, 0);</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="horizontalSpacing">
@@ -765,6 +771,7 @@ border-radius: 4px;</string>
        <widget class="QLabel" name="units_label">
         <property name="styleSheet">
          <string notr="true">border: 1px solid #007bff;
+color: rgb(0, 0, 0);
 </string>
         </property>
         <property name="text">
@@ -776,7 +783,7 @@ border-radius: 4px;</string>
        <widget class="QLabel" name="lambda_label">
         <property name="styleSheet">
          <string notr="true">border: 1px solid #007bff;
-</string>
+color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>Lambda (λ)</string>
@@ -787,7 +794,7 @@ border-radius: 4px;</string>
        <widget class="QLabel" name="mu_label">
         <property name="styleSheet">
          <string notr="true">border: 1px solid #007bff;
-</string>
+color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>Mu (μ)</string>
@@ -830,7 +837,7 @@ border: 1px solid #cccccc;</string>
        <widget class="QLabel" name="servers_label">
         <property name="styleSheet">
          <string notr="true">border: 1px solid #007bff;
-</string>
+color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>Servidores (c)</string>
@@ -946,6 +953,12 @@ border-radius: 4px;</string>
     <font>
      <family>Arial</family>
     </font>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::TextHeuristicRole</enum>
    </property>
   </action>
  </widget>

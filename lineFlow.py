@@ -14,9 +14,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(935, 593)
-        MainWindow.setStyleSheet("background-color: rgb(207, 207, 207);\n"
-"font-family: Arial, sans-serif;")
+        MainWindow.resize(935, 594)
+        MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"selection-color: rgb(255, 255, 255);\n"
+"font-family: Arial, sans-serif;\n"
+"color: rgb(0, 0, 127);\n"
+"alternate-background-color: rgb(85, 170, 255);\n"
+"selection-background-color: #007bff")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame_4 = QtWidgets.QFrame(self.centralwidget)
@@ -68,7 +72,7 @@ class Ui_MainWindow(object):
         self.frame_3 = QtWidgets.QFrame(self.frame_4)
         self.frame_3.setGeometry(QtCore.QRect(20, 50, 561, 161))
         self.frame_3.setStyleSheet("border: 1px solid #007bff;\n"
-"")
+"color: rgb(0, 0, 0);")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
@@ -219,7 +223,8 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_5.setFont(font)
-        self.label_5.setStyleSheet("border:none;")
+        self.label_5.setStyleSheet("border:none;\n"
+"color: rgb(0, 0, 0);")
         self.label_5.setObjectName("label_5")
         self.label_4 = QtWidgets.QLabel(self.frame_5)
         self.label_4.setGeometry(QtCore.QRect(10, 10, 51, 51))
@@ -330,7 +335,8 @@ class Ui_MainWindow(object):
         self.unlimited_radioButton.setObjectName("unlimited_radioButton")
         self.widget = QtWidgets.QWidget(self.frame2)
         self.widget.setGeometry(QtCore.QRect(30, 210, 251, 171))
-        self.widget.setStyleSheet("border:none;")
+        self.widget.setStyleSheet("border:none;\n"
+"color: rgb(0, 0, 0);")
         self.widget.setObjectName("widget")
         self.gridLayout = QtWidgets.QGridLayout(self.widget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -339,17 +345,18 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         self.units_label = QtWidgets.QLabel(self.widget)
         self.units_label.setStyleSheet("border: 1px solid #007bff;\n"
+"color: rgb(0, 0, 0);\n"
 "")
         self.units_label.setObjectName("units_label")
         self.gridLayout.addWidget(self.units_label, 2, 0, 1, 1)
         self.lambda_label = QtWidgets.QLabel(self.widget)
         self.lambda_label.setStyleSheet("border: 1px solid #007bff;\n"
-"")
+"color: rgb(0, 0, 0);")
         self.lambda_label.setObjectName("lambda_label")
         self.gridLayout.addWidget(self.lambda_label, 0, 0, 1, 1)
         self.mu_label = QtWidgets.QLabel(self.widget)
         self.mu_label.setStyleSheet("border: 1px solid #007bff;\n"
-"")
+"color: rgb(0, 0, 0);")
         self.mu_label.setObjectName("mu_label")
         self.gridLayout.addWidget(self.mu_label, 1, 0, 1, 1)
         self.lambda_input_lineEdit = QtWidgets.QLineEdit(self.widget)
@@ -374,7 +381,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.servers_input_lineEdit, 3, 1, 1, 1)
         self.servers_label = QtWidgets.QLabel(self.widget)
         self.servers_label.setStyleSheet("border: 1px solid #007bff;\n"
-"")
+"color: rgb(0, 0, 0);")
         self.servers_label.setObjectName("servers_label")
         self.gridLayout.addWidget(self.servers_label, 3, 0, 1, 1)
         self.label = QtWidgets.QLabel(self.frame2)
@@ -427,6 +434,8 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setFamily("Arial")
         self.openGeneratorWindow.setFont(font)
+        self.openGeneratorWindow.setShortcutContext(QtCore.Qt.WindowShortcut)
+        self.openGeneratorWindow.setMenuRole(QtWidgets.QAction.TextHeuristicRole)
         self.openGeneratorWindow.setObjectName("openGeneratorWindow")
         self.menuHerramientas.addAction(self.openGeneratorWindow)
         self.menubar.addAction(self.menuHerramientas.menuAction())

@@ -9,7 +9,7 @@ QApplication,
 import datetime
 from PyQt5.QtGui import QDoubleValidator, QIntValidator, QIcon
 from Generator import Ui_GeneratorWindow
-from reportlab.lib.pagesizes import letter
+from reportlab.lib.pagesizes import letter, landscape
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer
 from reportlab.lib import colors
 import datetime
@@ -49,6 +49,7 @@ class MainGenerator(QMainWindow):
         self.ui.clean_pushButton.clicked.connect(self.clean_all)
         self.ui.pdf_export_pushButton.clicked.connect(self.pdf_export)
         self.ui.open_reports_pushButton.clicked.connect(self.open_reports)
+        self.ui.open_manual_pushButton.clicked.connect(self.open_manual)
 
     def setValidators(self):
         self.lambda_input.setValidator(QDoubleValidator(0.0, 9999.0, 2))
@@ -103,9 +104,7 @@ class MainGenerator(QMainWindow):
         if self.statistics:
             self.data_std.setColumnCount(len(self.results[0]) + 1)
             self.data_std.setRowCount(2)
-            header = [f"X{i}" for i in range(1, len(self.results[0]) + 1)]
-            header.insert(0, "Cal")
-            self.data_std.setHorizontalHeaderLabels(header)
+            self.data_std.setHorizontalHeaderLabels(["Métrica"] + [f"X{i}" for i in range(1, len(self.results[0]) + 1)])
 
             self.data_std.setItem(0, 0, QTableWidgetItem("Promedio"))
             self.data_std.setItem(1, 0, QTableWidgetItem("Desviación estandard"))
@@ -136,6 +135,11 @@ class MainGenerator(QMainWindow):
         if not os.path.exists(path):
             os.makedirs(path)
 
+    def open_manual(self):
+        path = os.path.join(os.getcwd(), "manual.pdf")
+        self.handle_directory(path)
+        os.startfile(path)
+
 
     def pdf_export(self):
         # Export results to PDF
@@ -143,19 +147,23 @@ class MainGenerator(QMainWindow):
             QMessageBox.warning(self, "Error", "Por favor, calcule los valores antes de exportar el reporte")
             return
         
+        metodo = "Poisson" if self.ui.poisson_radioButton.isChecked() else "Exponencial"
+        
         saved_path = os.path.join(os.getcwd(), "reportes/numeros_aleatorios")
         self.handle_directory(saved_path)
 
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = os.path.join(saved_path, f"reporte_{timestamp}.pdf")
-        document = SimpleDocTemplate(filename, pagesize=letter)
+        filename = os.path.join(saved_path, f"reporte_{metodo}_{timestamp}.pdf")
+        document = SimpleDocTemplate(filename, pagesize=landscape(letter))
 
-        # Create styles
+        # Crear estilos de texto
         estilos = getSampleStyleSheet()
         estilo_titulo = ParagraphStyle('TitleStyle', parent=estilos['Title'], fontSize=18, fontName='Helvetica-Bold')
-    
-        # Title
-        titulo = Paragraph("Resultados", estilo_titulo)
+        estilo_subtitulo = ParagraphStyle('SubTitleStyle', parent=estilos['Title'], fontSize=14, fontName='Helvetica-Bold')
+
+        # Títulos
+        titulo = Paragraph(f"Resultados - Distribución {metodo}", estilo_titulo)
+        subtitulo = Paragraph("Datos Generados", estilo_subtitulo)
 
         data = [["Resultados", ""],
         [f"X{i}" for i in range(1, len(self.results[0]) + 1)]]
@@ -167,23 +175,17 @@ class MainGenerator(QMainWindow):
             else:
                 data.append([f"{value:.4f}" for value in item])
 
-        data_statistics_header =  [f"X{i}" for i in range(1, len(self.results[0]) + 1)]
-        data_statistics_header.insert(0, "Cal")
-        data_statistics = [["Datos estatísticos", ""], data_statistics_header]
+        # Crear tabla de estadísticas
+        data_statistics = [["Datos Estadísticos", ""]]  # Título
+        data_statistics.append(["Métrica"] + [f"X{i}" for i in range(1, len(self.results[0]) + 1)])
 
-        data_average = [f"{value:.2f}" for value in self.statistics["averages"]]
-        data_average.insert(0, "Promedio")
-        data_standard_deviation = [f"{value:.4f}" for value in self.statistics["standard_deviations"]]
-        data_standard_deviation.insert(0, "Desviación estandard")
-        data_statistics.append(data_average)
-        data_statistics.append(data_standard_deviation)
+        # Insertar promedios y desviaciones estándar
+        data_statistics.append(["Promedio"] + [f"{value:.2f}" for value in self.statistics["averages"]])
+        data_statistics.append(["Desviación Estándar"] + [f"{value:.4f}" for value in self.statistics["standard_deviations"]])
 
-
-        table = Table(data)
-        table2 = Table(data_statistics)
-
+        # Definir estilos de tabla
         style = TableStyle([
-            ('SPAN', (0, 0), (-1, 0)),
+            ('SPAN', (0, 0), (-1, 0)),  # Fusionar celda del título
             ('BACKGROUND', (0, 0), (-1, 0), colors.blue),
             ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
@@ -193,11 +195,14 @@ class MainGenerator(QMainWindow):
             ('GRID', (0, 0), (-1, -1), 1, colors.black)
         ])
 
-        table.setStyle(style)
+        # Crear y aplicar estilos a las tablas
+        table_results = Table(data)
+        table_results.setStyle(style)
+    
+        table_stats = Table(data_statistics)
+        table_stats.setStyle(style)
 
-        table2.setStyle(style)
-
-        elements = [titulo, Spacer(1, 12), table, Spacer(1, 20), table2]
+        # Construcción del documento
+        elements = [titulo, Spacer(1, 12), subtitulo, Spacer(1, 10), table_results, Spacer(1, 20), table_stats]
         document.build(elements)
-
         QMessageBox.information(self, "Éxito", f"Reporte exportado como {filename}")
