@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_GeneratorWindow(object):
     def setupUi(self, GeneratorWindow):
         GeneratorWindow.setObjectName("GeneratorWindow")
-        GeneratorWindow.resize(943, 618)
+        GeneratorWindow.resize(941, 620)
         self.centralwidget = QtWidgets.QWidget(GeneratorWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
@@ -201,6 +201,18 @@ class Ui_GeneratorWindow(object):
         self.label_4.setPixmap(QtGui.QPixmap(":/prefijoNuevo/wind.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
+        self.open_manual_pushButton = QtWidgets.QPushButton(self.frame_5)
+        self.open_manual_pushButton.setGeometry(QtCore.QRect(680, 20, 101, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.open_manual_pushButton.setFont(font)
+        self.open_manual_pushButton.setStyleSheet("background-color: #007bff;\n"
+"color: #ffffff;\n"
+"border-radius: 4px;\n"
+"\n"
+"border: none;")
+        self.open_manual_pushButton.setObjectName("open_manual_pushButton")
         self.frame_5.raise_()
         self.frame_2.raise_()
         self.frame_3.raise_()
@@ -226,6 +238,7 @@ class Ui_GeneratorWindow(object):
         self.label.setText(_translate("GeneratorWindow", "  Generador de numeros aleatorios"))
         self.label_5.setText(_translate("GeneratorWindow", "LineFlow"))
         self.open_reports_pushButton.setText(_translate("GeneratorWindow", "Abrir reportes"))
+        self.open_manual_pushButton.setText(_translate("GeneratorWindow", "Manual"))
 import logo_rc
 
 
