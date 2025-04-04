@@ -10,7 +10,7 @@ class Bank:
 
     def setAgent(self, agents: list[Agent]) -> None:
         self.agents = agents
-        x = 800
+        x = 900
         y = 100
         for i, agent in enumerate(self.agents):
             y += 100

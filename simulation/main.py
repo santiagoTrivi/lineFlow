@@ -41,12 +41,9 @@ while True:
             pygame.quit()
             exit()
 
-        if event.type == pygame_gui.UI_BUTTON_PRESSED and event.ui_object_id == "#start_button":
-            customers = customersArrivalTime(float(SIMULATION_INPUTS.LAMBDA_INPUT.get_text()), int(SIMULATION_INPUTS.UNITS_INPUT.get_text()))
-            agents = agentServingTime(float(SIMULATION_INPUTS.MU_INPUT.get_text()), int(SIMULATION_INPUTS.UNITS_INPUT.get_text()), int(SIMULATION_INPUTS.SERVERS_INPUT.get_text()))
-            ##for customer in customers:
-                ##print(customer.name, customer.arrival_time)
-            
+        if event.type == pygame_gui.UI_BUTTON_PRESSED and event.ui_object_id == "#load_button":
+            customer = customersArrivalTime(float(SIMULATION_INPUTS.LAMBDA_INPUT.get_text()))
+            agents = agentServingTime(float(SIMULATION_INPUTS.MU_INPUT.get_text()), int(SIMULATION_INPUTS.SERVERS_INPUT.get_text()))
             bank.setAgent(agents)
             
             
