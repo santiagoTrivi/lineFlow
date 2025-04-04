@@ -1,8 +1,9 @@
 import pygame 
+import random
 
 class Person(pygame.sprite.Sprite):
     def __init__(self, name, image_path):
-        self.name = name
+        self.name = f"{name}{randint()}"
         self.image_path = image_path
 
     def render(self, x, y, scale):
@@ -15,5 +16,9 @@ class Person(pygame.sprite.Sprite):
         self.rect = (self.x, self.y)
     
 
+
+def randint(min=0,max=100):
+    a = random.randint(min,max)
+    return a
 
 
