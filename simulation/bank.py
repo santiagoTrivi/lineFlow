@@ -1,36 +1,14 @@
-from agentClass import Agent
-from customerClass import Customer
-from pygame import *
+from cashier import Cashier
+from queue import Queue
 
 class Bank:
-    def __init__(self, screen: Surface) -> None:
-        self.screen = screen
-        self.queue: list[Customer] = []
+    def __init__(self, lambda_: float, mu: float, cashiers_amount: int):
+        self.queue = Queue()
+        self.lambda_ = lambda_
+        self.mu = mu
+        self.cashiers: list[Cashier] = [Cashier(mu, f"Cashier {i}") for i in range(cashiers_amount)]
 
 
-    def setAgent(self, agents: list[Agent]) -> None:
-        self.agents = agents
-        x = 900
-        y = 100
-        for i, agent in enumerate(self.agents):
-            y += 100
-            if (i % 5) == 0:
-                x = x + 100
-                y = 100
-            agent.render(x, y, 1)
-            self.screen.blit(agent.image, agent.rect)
-
-
-    def addQueue(self, customer: Customer) -> None:
-        x = 400
-        y = 600
-        if(len(self.queue) == 0):
-            customer.render(x, y, 1)
-        else:
-            last_customer = self.queue[-1]
-            x = last_customer.x - 100
-            customer.render(x, y, 1)
-
-        self.queue.append(customer)
-
-        self.screen.blit(customer.image, customer.rect)
+    def add_customer(self, customer):
+        print(f"Customer {customer} arrived")
+        self.queue.put(customer)
