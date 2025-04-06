@@ -6,6 +6,7 @@ import numpy as np
 from queue import Queue
 from validation import (is_float, is_int, servers_validation)
 from customer import Customer
+from report import generate_report
 
 class BankSimulation:
     def __init__(self, master):
@@ -119,6 +120,7 @@ class BankSimulation:
         self.process_customers()
 
     def stop_simulation(self):
+        generate_report(self.data_logs)
         self.running = False
         self.status_label.config(text="Estado: Detenido")
 
