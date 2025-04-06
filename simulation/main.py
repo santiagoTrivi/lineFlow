@@ -27,6 +27,9 @@ class BankSimulation:
         self.customer_queue = Queue()
         self.running = False
 
+        self.data_logs = [["logs de eventos", ""], ["Personaje", "evento", "tiempo", "probabilidad"]]  
+        self.data_exponential = {}
+
     def create_widgets(self):
         frame = ttk.Frame(self.master, padding=15, style="TFrame")  # Espaciado general más ajustado
         frame.pack(fill=tk.BOTH, expand=True)
@@ -105,6 +108,10 @@ class BankSimulation:
         if not servers_validation(int(servers_value)):
             messagebox.showerror("Error de entrada", "El número de cajeros debe ser menor o igual a 6.")
             return
+        
+        for i in range(1, int(servers_value) + 1):
+            self.data_exponential[f"X{i}"] = []
+
 
         self.running = True
         self.status_label.config(text="Estado: En ejecución")
@@ -114,6 +121,35 @@ class BankSimulation:
     def stop_simulation(self):
         self.running = False
         self.status_label.config(text="Estado: Detenido")
+
+    def simulate_customers(self):
+        def customer_generator():
+            while self.running:
+                customer = Customer(float(self.lambda_input.get()))
+                self.customer_queue.put(customer)
+                print(f"Customer {customer.id} arrived.")
+                self.data_logs.append([f"Customer {customer.id}", "arrived", "", customer.arrival_time])
+                time.sleep(customer.arrival_time)  # New customer every 1 to 3 seconds
+
+        threading.Thread(target=customer_generator, daemon=True).start()
+
+    def process_customers(self):
+        def cashier_worker(cashier_id):
+            while self.running:
+                if not self.customer_queue.empty():
+                    customer = self.customer_queue.get()
+                    service_time = np.random.exponential(float(self.mu_input.get()))  # Random service time between 2 to 5 seconds
+                    print(f"Cashier {cashier_id} is serving Customer {customer.id} for {service_time:.2f} seconds.")
+                    self.data_logs.append([f"Cashier {cashier_id}", "serving", f"{service_time:.4f}", ""])
+                    self.data_exponential[f"X{cashier_id}"].append(f"{service_time:.4f}")
+                    time.sleep(service_time)
+                    print(f"Cashier {cashier_id} finished serving Customer {customer.id}.")
+                    self.data_logs.append([f"Cashier {cashier_id}", f"finished serving customer {customer.id}", "", ""])
+                else:
+                    time.sleep(1)  # Wait for customers
+
+        for i in range(int(self.servers_input.get())):
+            threading.Thread(target=cashier_worker, args=(i + 1,), daemon=True).start()
 
 if __name__ == "__main__":
     root = tk.Tk()
