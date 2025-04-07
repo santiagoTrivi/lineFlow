@@ -11,7 +11,7 @@ def handle_directory( path):
         if not os.path.exists(path):
             os.makedirs(path)
 
-def generate_report(logs, data_exponential, data_poisson):
+def generate_report(logs, data_exponential, data_poisson, static):
     subdir = "reportes"
     saved_path = os.path.join(os.getcwd(), subdir)
     handle_directory(saved_path)
@@ -69,6 +69,37 @@ def generate_report(logs, data_exponential, data_poisson):
         ('GRID', (0, 0), (-1, -1), 1, colors.black)
     ]))
 
+    static_result = [["Resultados Básicos", ""],
+                 ["Parámetro", "Valor"]]
+
+    static_result += [
+        ["Lambda (λ)", f"{static['Lambda']:.4f}"],
+        ["Mu (μ)", f"{static['Mu']:.4f}"],
+        ["Rho (ρ)", f"{static['Rho']:.4f}"],
+        ["Po", f"{static['Po']:.4f}"],
+        ["Ls", f"{static['Ls']:.4f}"],
+        ["Lq", f"{static['Lq']:.4f}"],
+        ["Ws", f"{static['Ws']:.4f}"],
+        ["Wq", f"{static['Wq']:.4f}"]]
+    
+    stying_table = TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.purple),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+    ])
+    static_table = Table(static_result)
+    static_table.setStyle(stying_table)
+
+    dist = [["Distribución de Probabilidad", ""],
+    ["n", "Pn", "Fn"]]
+    for item in static['Prob_dist']:
+        dist.append([str(item['n']), f"{item['Pn']:.4f}", f"{item['Fn']:.4f}"])
+    
+    dist_table = Table(dist)
+    dist_table.setStyle(stying_table)
+
     spacer = Spacer(1, 20)
-    elements = [titulo, spacer, logs_table, spacer, exp_table, spacer, poisson_table]
+    elements = [titulo, spacer, exp_table, spacer, poisson_table, spacer, static_table, spacer, dist_table, spacer, logs_table]
     document.build(elements)

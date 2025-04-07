@@ -7,6 +7,7 @@ from queue import Queue
 from validation import (is_float, is_int, servers_validation)
 from customer import Customer
 from report import generate_report
+from multipleServerQueue import (multiple_calculate_unlimited)
 
 class BankSimulation:
     def __init__(self, master):
@@ -120,7 +121,8 @@ class BankSimulation:
         self.process_customers()
 
     def stop_simulation(self):
-        generate_report(self.data_logs, self.data_exponential, self.data_poisson)  # Llamada corregida
+        static = multiple_calculate_unlimited(float(self.lambda_input.get()), float(self.mu_input.get()), int(self.servers_input.get()))
+        generate_report(self.data_logs, self.data_exponential, self.data_poisson, static)  # Llamada corregida
         messagebox.showinfo("Simulación detenida", "La simulación ha sido detenida y el reporte ha sido generado.")
         self.running = False
         self.status_label.config(text="Estado: Detenido")
@@ -132,7 +134,7 @@ class BankSimulation:
                 self.customer_queue.put(customer)
                 self.data_poisson.append(customer.arrival_time)  # Guardar tiempos de llegada
                 print(f"Customer {customer.id} arrived.")
-                self.data_logs.append([f"Customer {customer.id}", "arrived", "", customer.arrival_time])
+                self.data_logs.append([f"Cliente {customer.id}", "llegada", "", customer.arrival_time])
                 time.sleep(customer.arrival_time)
 
         threading.Thread(target=customer_generator, daemon=True).start()
@@ -143,12 +145,12 @@ class BankSimulation:
                 if not self.customer_queue.empty():
                     customer = self.customer_queue.get()
                     service_time = np.random.exponential(float(self.mu_input.get()))
-                    print(f"Cashier {cashier_id} is serving Customer {customer.id} for {service_time:.2f} seconds.")
-                    self.data_logs.append([f"Cashier {cashier_id}", "serving", f"{service_time:.4f}", ""])
+                    print(f"Cajero {cashier_id} atendiendo cliente {customer.id} durante {service_time:.2f} segundos")
+                    self.data_logs.append([f"Cajero {cashier_id}", "atendiendo", f"{service_time:.4f}", ""])
                     self.data_exponential[f"X{cashier_id}"].append(f"{service_time:.4f}")
                     time.sleep(service_time)
-                    print(f"Cashier {cashier_id} finished serving Customer {customer.id}.")
-                    self.data_logs.append([f"Cashier {cashier_id}", f"finished serving customer {customer.id}", "", ""])
+                    print(f"Cajero {cashier_id} finalizo atender al cliente {customer.id}.")
+                    self.data_logs.append([f"Cajero {cashier_id}", f"finalizando cliente {customer.id}", "", ""])
                 else:
                     time.sleep(1)
 
