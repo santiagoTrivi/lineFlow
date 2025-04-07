@@ -102,6 +102,14 @@ class BankSimulation:
         if not servers_validation(int(servers_value)):
             messagebox.showerror("Error de entrada", "El número de cajeros debe ser menor o igual a 6.")
             return
+        
+        if int(lambda_value) >= int(mu_value):
+            messagebox.showerror("Error de entrada", "Lambda debe ser menor que Mu.")
+            return
+        
+        if int(servers_value) <= 0:
+            messagebox.showerror("Error de entrada", "El número de cajeros debe ser mayor que cero.")
+            return
 
         for i in range(1, int(servers_value) + 1):
             self.data_exponential[f"X{i}"] = []
@@ -113,6 +121,7 @@ class BankSimulation:
 
     def stop_simulation(self):
         generate_report(self.data_logs, self.data_exponential, self.data_poisson)  # Llamada corregida
+        messagebox.showinfo("Simulación detenida", "La simulación ha sido detenida y el reporte ha sido generado.")
         self.running = False
         self.status_label.config(text="Estado: Detenido")
 
