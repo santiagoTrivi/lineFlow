@@ -63,7 +63,7 @@ class BankSimulation:
         self.submit_button.bind("<Leave>", lambda e: self.on_leave(self.submit_button))
 
         self.stop_button = tk.Button(button_frame,
-                                     text="Detener",
+                                     text="Detener Simulación",
                                      command=self.stop_simulation,
                                      font=("Verdana", 12),
                                      bg="#007BFF",
